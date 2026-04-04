@@ -1,14 +1,17 @@
-import { db, pool } from './db/db.js';
+import express from	 'express';
+import { matchesRouter } from './routes/matches.js';
 
-async function main() {
-	try {
-		await db.execute('select 1');
-		console.log('Database connection is ready.');
-	} catch (err) {
-		console.error(err);
-	} finally {
-		if (pool) await pool.end();
-	}
-}
+const app = express();
+const PORT = process.env.PORT || 8080;
 
-await main();
+app.use(express.json());
+
+app.get('/', (req, res) => {
+	res.send('Welcome to the Sportz API');
+});
+
+app.use('/matches', matchesRouter);
+
+app.listen(PORT, () => {
+	console.log(`Server is running on port ${PORT}`);
+});
