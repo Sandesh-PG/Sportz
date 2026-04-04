@@ -1,12 +1,14 @@
-import express from 'express';
+import { db, pool } from './db/db.js';
 
-const app = express();
-const PORT = process.env.PORT || 3000;
+async function main() {
+	try {
+		await db.execute('select 1');
+		console.log('Database connection is ready.');
+	} catch (err) {
+		console.error(err);
+	} finally {
+		if (pool) await pool.end();
+	}
+}
 
-app.get('/', (_req, res) => {
-	res.send('Express server is running');
-});
-
-app.listen(PORT, () => {
-	console.log(`Server listening on http://localhost:${PORT}`);
-});
+await main();
