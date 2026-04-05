@@ -2,6 +2,7 @@ import express from	 'express';
 import http from 'node:http';
 import { matchesRouter } from './routes/matches.js';
 import { attachWebSocketServer } from './ws/server.js';
+import { securityMiddleware } from './arcjet.js';
 
 const PORT = process.env.PORT || 8080;
 const HOST = process.env.HOST || '0.0.0.0';
@@ -15,6 +16,8 @@ app.use(express.json());
 app.get('/', (req, res) => {
 	res.send('Welcome to the Sportz API');
 });
+
+app.use(securityMiddleware())
 
 app.use('/matches', matchesRouter);
 
