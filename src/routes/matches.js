@@ -6,7 +6,7 @@ import { getMatchStatus } from '../utils/matches-status.js';
 import { createMatchSchema, listMatchesQuerySchema } from '../validation/matches.js';
 
 export const matchesRouter = Router();
-
+console.log("DB URL:", process.env.DATABASE_URL);
 const matchLimit = 50;
 
 matchesRouter.get('/',async (req, res) => {

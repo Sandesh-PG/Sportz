@@ -65,6 +65,7 @@ function broadcastToAll(wss, payload) {
 }
 
 function handleMessage(ws, data) {
+  console.log("📨 WS message:", data.toString());
   let message;
   try {
     message = JSON.parse(data.toString());
@@ -114,10 +115,20 @@ export function attachWebSocketServer(server) {
     socket.subscriptions = new Set();
     sendJson(socket, { type: 'welcome' });
 
-    socket.on('message', (data) => handleMessage(socket, data));
-    socket.on('error', (error) => socket.terminate());
-    socket.on('close', () => cleanUpSubscriptions(socket));
+    socket.on('message', (data) => {
+      console.log("📨 RAW WS message received:", data.toString());
+      handleMessage(socket, data);
+    });
 
+    socket.on('error', (error) => {
+      console.error("❌ WebSocket server error:", error);
+    });
+
+    socket.on('close', (code, reason) => {
+      console.log("🔌 WebSocket closed:", code, reason.toString());
+      cleanUpSubscriptions(socket);
+    });
+    
     socket.on('error', console.error);
   });
 

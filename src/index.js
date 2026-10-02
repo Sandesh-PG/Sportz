@@ -8,7 +8,7 @@ import { attachWebSocketServer } from './ws/server.js';
 import { securityMiddleware } from './arcjet.js';
 import { commentaryRouter } from './routes/commantary.js';
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 10000;
 const HOST = process.env.HOST || '0.0.0.0';
 
 const app = express();
@@ -21,7 +21,7 @@ app.get('/', (req, res) => {
 	res.send('Welcome to the Sportz API');
 });
 
-app.use(securityMiddleware());
+// app.use(securityMiddleware());
 
 app.use('/matches', matchesRouter);
 app.use('/matches/:id/commentary', commentaryRouter);
