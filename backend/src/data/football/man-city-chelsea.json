@@ -1,0 +1,80 @@
+[
+  {
+    "minute": 3,
+    "eventType": "shot",
+    "actor": "Erling Haaland",
+    "team": "Manchester City",
+    "message": "Haaland gets the first shot away, but it is comfortably saved.",
+    "metadata": {
+      "scoreDelta": {
+        "home": 0,
+        "away": 0
+      }
+    }
+  },
+  {
+    "minute": 8,
+    "eventType": "corner",
+    "actor": "Kevin De Bruyne",
+    "team": "Manchester City",
+    "message": "De Bruyne swings in a dangerous corner, cleared by Chelsea.",
+    "metadata": {
+      "scoreDelta": {
+        "home": 0,
+        "away": 0
+      }
+    }
+  },
+  {
+    "minute": 14,
+    "eventType": "yellow_card",
+    "actor": "Moises Caicedo",
+    "team": "Chelsea",
+    "message": "Caicedo is booked for a late challenge.",
+    "metadata": {
+      "scoreDelta": {
+        "home": 0,
+        "away": 0
+      }
+    }
+  },
+  {
+    "minute": 22,
+    "eventType": "goal",
+    "actor": "Erling Haaland",
+    "team": "Manchester City",
+    "message": "GOAL! Haaland finishes from close range.",
+    "metadata": {
+      "scoreDelta": {
+        "home": 1,
+        "away": 0
+      }
+    }
+  },
+  {
+    "minute": 31,
+    "eventType": "shot",
+    "actor": "Cole Palmer",
+    "team": "Chelsea",
+    "message": "Palmer cuts inside and forces a strong save.",
+    "metadata": {
+      "scoreDelta": {
+        "home": 0,
+        "away": 0
+      }
+    }
+  },
+  {
+    "minute": 45,
+    "eventType": "half_time",
+    "actor": null,
+    "team": null,
+    "message": "Half-time. Manchester City lead 1-0.",
+    "metadata": {
+      "scoreDelta": {
+        "home": 0,
+        "away": 0
+      }
+    }
+  }
+]

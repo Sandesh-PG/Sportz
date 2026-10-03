@@ -1,0 +1,34 @@
+[
+  {
+    "minute": 24,
+    "period": "1st half",
+    "eventType": "goal",
+    "actor": "AC Milan forward",
+    "team": "AC Milan",
+    "message": "GOAL! Milan lead.",
+    "scoreDelta": {
+      "home": 1,
+      "away": 0
+    }
+  },
+  {
+    "minute": 67,
+    "period": "2nd half",
+    "eventType": "yellow_card",
+    "actor": "Inter midfielder",
+    "team": "Inter Milan",
+    "message": "Yellow card."
+  },
+  {
+    "minute": 84,
+    "period": "2nd half",
+    "eventType": "goal",
+    "actor": "Inter forward",
+    "team": "Inter Milan",
+    "message": "GOAL! Inter equalise.",
+    "scoreDelta": {
+      "home": 0,
+      "away": 1
+    }
+  }
+]

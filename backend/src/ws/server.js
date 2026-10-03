@@ -15,12 +15,14 @@ function unsubscribe(matchId, ws) {
   if(!subscribers){
     return
   }
-
+  subscribers.delete(ws);
   if (matchSubscribers.get(matchId).size === 0) {
     matchSubscribers.delete(matchId);
   } 
 
 }
+
+
 
 function cleanUpSubscriptions(ws) {
     for (const [matchId, subscribers] of matchSubscribers.entries()) {
@@ -46,6 +48,7 @@ function broadcastToMatch(matchId, payload) {
     if (!subscribers) {
         return;
     }
+
     const message = JSON.stringify(payload);
 
     for(const client of subscribers) {
@@ -60,13 +63,16 @@ function broadcastToAll(wss, payload) {
         if(client.readyState !== WebSocket.OPEN) {
             return;
         }
+
         client.send(JSON.stringify(payload));
     }); 
 }
 
 function handleMessage(ws, data) {
   console.log("📨 WS message:", data.toString());
+
   let message;
+
   try {
     message = JSON.parse(data.toString());
   } catch (error) {
@@ -77,28 +83,67 @@ function handleMessage(ws, data) {
   if(message?.type === 'subscribe' && Number.isInteger(message.matchId)) {
     subscribe(message.matchId, ws);
     ws.subscriptions.add(message.matchId);
-    sendJson(ws, { type: 'subscribed', matchId: message.matchId });
+
+    sendJson(ws, {
+      type: 'subscribed',
+      matchId: message.matchId
+    });
+
     return;
   }
 
   if(message?.type === 'unsubscribe' && Number.isInteger(message.matchId)) {
     unsubscribe(message.matchId, ws);
     ws.subscriptions.delete(message.matchId);
-    sendJson(ws, { type: 'unsubscribed', matchId: message.matchId });
+
+    sendJson(ws, {
+      type: 'unsubscribed',
+      matchId: message.matchId
+    });
+
     return;
   }
 }
 
 export function attachWebSocketServer(server) {
-  const wss = new WebSocketServer({ server, path: '/ws', maxPayload: 1024 * 1024 });
+  const wss = new WebSocketServer({
+    server,
+    path: '/ws',
+    maxPayload: 1024 * 1024
+  });
 
   wss.on('connection', async (socket, request) => {
+
+    // Set up the socket immediately so incoming messages
+    // are not lost while Arcjet protection is running.
+    socket.isAlive = true;
+
+    socket.on('pong', () => {
+      socket.isAlive = true;
+    });
+
+    socket.subscriptions = new Set();
+
+    socket.on('message', (data) => {
+      console.log("📨 RAW WS message received:", data.toString());
+      handleMessage(socket, data);
+    });
+
+    // Arcjet protection happens after the message listener
+    // has already been attached.
     if(wsArcjet) {
       try{
         const decision = await wsArcjet.protect(request);
+
         if(decision.isDenied()){
-          const code = decision.reason.isRateLimit() ? 1013 : 1008; // 1013: Try Again Later, 1008: Policy Violation
-          const reason = decision.reason.isRateLimit() ? 'Too many requests. Please try again later.' : 'Access denied.';
+          const code = decision.reason.isRateLimit()
+            ? 1013
+            : 1008;
+
+          const reason = decision.reason.isRateLimit()
+            ? 'Too many requests. Please try again later.'
+            : 'Access denied.';
+
           socket.close(code, reason);
           return;
         }
@@ -109,15 +154,9 @@ export function attachWebSocketServer(server) {
         return;
       }
     }
-    socket.isAlive = true;
-    socket.on('pong', () => { socket.isAlive = true; });
 
-    socket.subscriptions = new Set();
-    sendJson(socket, { type: 'welcome' });
-
-    socket.on('message', (data) => {
-      console.log("📨 RAW WS message received:", data.toString());
-      handleMessage(socket, data);
+    sendJson(socket, {
+      type: 'welcome'
     });
 
     socket.on('error', (error) => {
@@ -128,7 +167,7 @@ export function attachWebSocketServer(server) {
       console.log("🔌 WebSocket closed:", code, reason.toString());
       cleanUpSubscriptions(socket);
     });
-    
+
     socket.on('error', console.error);
   });
 
@@ -144,12 +183,21 @@ export function attachWebSocketServer(server) {
   wss.on('close', () => clearInterval(interval));
 
   function broadcastMatchCreated(match) {
-    broadcastToAll(wss, { type: 'match_created', data: match });
+    broadcastToAll(wss, {
+      type: 'match_created',
+      data: match
+    });
   }
 
   function broadCastCommantary(matchId, commentary) {
-    broadcastToMatch(matchId, { type: 'commentary_update', data: commentary });
+    broadcastToMatch(matchId, {
+      type: 'commentary_update',
+      data: commentary
+    });
   }
 
-  return { broadcastMatchCreated, broadCastCommantary };
+  return {
+    broadcastMatchCreated,
+    broadCastCommantary
+  };
 }

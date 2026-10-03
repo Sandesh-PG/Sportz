@@ -1,0 +1,54 @@
+[
+  {
+    "minute": 8,
+    "period": "1st half",
+    "eventType": "shot",
+    "actor": "Bukayo Saka",
+    "team": "Arsenal",
+    "message": "Shot on target saved by the goalkeeper."
+  },
+  {
+    "minute": 19,
+    "period": "1st half",
+    "eventType": "yellow_card",
+    "actor": "Liverpool defender",
+    "team": "Liverpool",
+    "message": "Yellow card for a late challenge."
+  },
+  {
+    "minute": 31,
+    "period": "1st half",
+    "eventType": "goal",
+    "actor": "Arsenal forward",
+    "team": "Arsenal",
+    "message": "GOAL! Arsenal take the lead.",
+    "scoreDelta": {
+      "home": 1,
+      "away": 0
+    }
+  },
+  {
+    "minute": 45,
+    "period": "1st half",
+    "eventType": "half_time",
+    "actor": null,
+    "team": null,
+    "message": "Half time. Arsenal lead 1-0."
+  },
+  {
+    "minute": 58,
+    "period": "2nd half",
+    "eventType": "substitution",
+    "actor": "Arsenal",
+    "team": "Arsenal",
+    "message": "Arsenal make a substitution."
+  },
+  {
+    "minute": 67,
+    "period": "2nd half",
+    "eventType": "shot",
+    "actor": "Liverpool forward",
+    "team": "Liverpool",
+    "message": "Liverpool test the goalkeeper from distance."
+  }
+]

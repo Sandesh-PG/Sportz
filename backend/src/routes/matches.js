@@ -17,7 +17,11 @@ matchesRouter.get('/',async (req, res) => {
 
     const limit = Math.min(parsed.data.limit ?? 50, matchLimit); 
     try {
-        const data = await db.select().from(matches).orderBy(desc(matches.createdAt)).limit(limit);
+        const rows = await db.select().from(matches).orderBy(desc(matches.createdAt)).limit(limit);
+        const data = rows.map((match) => ({
+            ...match,
+            status: getMatchStatus(match.startTime, match.endTime),
+        }));
         res.json({ data});
     } catch (error) {
         console.error('Error fetching matches:', error);

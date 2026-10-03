@@ -1,13 +1,22 @@
 import { Router } from 'express';
-import { desc, eq } from 'drizzle-orm';
+import { desc, eq, sql } from 'drizzle-orm';
 import { db } from '../db/db.js';
-import { commentary } from '../db/schema.js';
+import { commentary, matches } from '../db/schema.js';
 import { matchIdParamSchema } from '../validation/matches.js';
 import { createCommentarySchema, listCommentaryQuerySchema } from '../validation/commentary.js';
 
 export const commentaryRouter = Router({ mergeParams: true });
 const MAX_LIMIT = 100;
 const DEFAULT_LIMIT = 100;
+
+function getNonZeroScoreDelta(value) {
+    if (value === undefined || value === null || value === '') {
+        return null;
+    }
+
+    const delta = Number(value);
+    return Number.isInteger(delta) && delta !== 0 ? delta : null;
+}
 
 commentaryRouter.get('/', async (req, res) => {
     const paramsResult = matchIdParamSchema.safeParse(req.params);
@@ -50,14 +59,36 @@ commentaryRouter.post('/', async (req, res) => {
 
     try {
         const { minutes, ...rest } = bodyResult.data;
-        const [result] = await db
-            .insert(commentary)
-            .values({
-                matchId: paramsResult.data.id,
-                minute: minutes,
-                ...rest,
-            })
-            .returning();
+        const scoreDelta = bodyResult.data.metadata?.scoreDelta;
+        const homeDelta = getNonZeroScoreDelta(scoreDelta?.home);
+        const awayDelta = getNonZeroScoreDelta(scoreDelta?.away);
+        let result;
+
+        await db.transaction(async (tx) => {
+            const scoreUpdates = {};
+            if (homeDelta !== null) {
+                scoreUpdates.homeScore = sql`${matches.homeScore} + ${homeDelta}`;
+            }
+            if (awayDelta !== null) {
+                scoreUpdates.awayScore = sql`${matches.awayScore} + ${awayDelta}`;
+            }
+
+            if (Object.keys(scoreUpdates).length > 0) {
+                await tx
+                    .update(matches)
+                    .set(scoreUpdates)
+                    .where(eq(matches.id, paramsResult.data.id));
+            }
+
+            [result] = await tx
+                .insert(commentary)
+                .values({
+                    matchId: paramsResult.data.id,
+                    minute: minutes,
+                    ...rest,
+                })
+                .returning();
+        });
 
             if(res.app.locals.broadcastCommantary) {    
                 res.app.locals.broadcastCommantary(result.matchId, result);

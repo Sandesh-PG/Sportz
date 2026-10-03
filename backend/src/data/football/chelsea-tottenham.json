@@ -1,0 +1,50 @@
+[
+  {
+    "minute": 14,
+    "period": "1st half",
+    "eventType": "goal",
+    "actor": "Chelsea forward",
+    "team": "Chelsea",
+    "message": "GOAL! Chelsea take the lead.",
+    "scoreDelta": {
+      "home": 1,
+      "away": 0
+    }
+  },
+  {
+    "minute": 38,
+    "period": "1st half",
+    "eventType": "goal",
+    "actor": "Tottenham forward",
+    "team": "Tottenham",
+    "message": "GOAL! Tottenham equalise.",
+    "scoreDelta": {
+      "home": 0,
+      "away": 1
+    }
+  },
+  {
+    "minute": 52,
+    "period": "2nd half",
+    "eventType": "goal",
+    "actor": "Chelsea forward",
+    "team": "Chelsea",
+    "message": "GOAL! Chelsea regain the lead.",
+    "scoreDelta": {
+      "home": 1,
+      "away": 0
+    }
+  },
+  {
+    "minute": 81,
+    "period": "2nd half",
+    "eventType": "goal",
+    "actor": "Chelsea midfielder",
+    "team": "Chelsea",
+    "message": "GOAL! Chelsea make it 3-1.",
+    "scoreDelta": {
+      "home": 1,
+      "away": 0
+    }
+  }
+]

@@ -1,0 +1,90 @@
+[
+  {
+    "id": "arsenal-liverpool",
+    "sport": "football",
+    "homeTeam": "Arsenal",
+    "awayTeam": "Liverpool",
+    "status": "live",
+    "startOffsetMinutes": -67,
+    "durationMinutes": 95,
+    "homeScore": 1,
+    "awayScore": 0
+  },
+  {
+    "id": "real-barcelona",
+    "sport": "football",
+    "homeTeam": "Real Madrid",
+    "awayTeam": "Barcelona",
+    "status": "live",
+    "startOffsetMinutes": -78,
+    "durationMinutes": 95,
+    "homeScore": 2,
+    "awayScore": 2
+  },
+  {
+    "id": "india-australia",
+    "sport": "cricket",
+    "homeTeam": "India",
+    "awayTeam": "Australia",
+    "status": "live",
+    "startOffsetMinutes": -145,
+    "durationMinutes": 240,
+    "homeScore": 142,
+    "awayScore": 0
+  },
+  {
+    "id": "man-city-chelsea",
+    "sport": "football",
+    "homeTeam": "Manchester City",
+    "awayTeam": "Chelsea",
+    "status": "scheduled",
+    "startOffsetMinutes": 35,
+    "durationMinutes": 95,
+    "homeScore": 0,
+    "awayScore": 0
+  },
+  {
+    "id": "nepal-netherlands",
+    "sport": "cricket",
+    "homeTeam": "Nepal",
+    "awayTeam": "Netherlands",
+    "status": "scheduled",
+    "startOffsetMinutes": 90,
+    "durationMinutes": 240,
+    "homeScore": 0,
+    "awayScore": 0
+  },
+  {
+    "id": "chelsea-tottenham",
+    "sport": "football",
+    "homeTeam": "Chelsea",
+    "awayTeam": "Tottenham",
+    "status": "finished",
+    "startOffsetMinutes": -210,
+    "durationMinutes": 95,
+    "homeScore": 3,
+    "awayScore": 1
+  },
+  {
+    "id": "england-south-africa",
+    "sport": "cricket",
+    "homeTeam": "England",
+    "awayTeam": "South Africa",
+    "status": "finished",
+    "startOffsetMinutes": -420,
+    "durationMinutes": 240,
+    "homeScore": 187,
+    "awayScore": 181
+  },
+  {
+    "id": "milan-inter",
+    "sport": "football",
+    "homeTeam": "AC Milan",
+    "awayTeam": "Inter Milan",
+    "status": "finished",
+    "startOffsetMinutes": -300,
+    "durationMinutes": 95,
+    "homeScore": 1,
+    "awayScore": 1
+  }
+]

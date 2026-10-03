@@ -1,0 +1,74 @@
+[
+  {
+    "minute": 11,
+    "period": "1st half",
+    "eventType": "goal",
+    "actor": "Real Madrid forward",
+    "team": "Real Madrid",
+    "message": "GOAL! Real Madrid open the scoring.",
+    "scoreDelta": {
+      "home": 1,
+      "away": 0
+    }
+  },
+  {
+    "minute": 27,
+    "period": "1st half",
+    "eventType": "goal",
+    "actor": "Barcelona forward",
+    "team": "Barcelona",
+    "message": "GOAL! Barcelona equalise.",
+    "scoreDelta": {
+      "home": 0,
+      "away": 1
+    }
+  },
+  {
+    "minute": 42,
+    "period": "1st half",
+    "eventType": "yellow_card",
+    "actor": "Real Madrid midfielder",
+    "team": "Real Madrid",
+    "message": "Yellow card."
+  },
+  {
+    "minute": 45,
+    "period": "1st half",
+    "eventType": "half_time",
+    "actor": null,
+    "team": null,
+    "message": "Half time. Scores are level."
+  },
+  {
+    "minute": 61,
+    "period": "2nd half",
+    "eventType": "goal",
+    "actor": "Real Madrid forward",
+    "team": "Real Madrid",
+    "message": "GOAL! Real Madrid restore their lead.",
+    "scoreDelta": {
+      "home": 1,
+      "away": 0
+    }
+  },
+  {
+    "minute": 73,
+    "period": "2nd half",
+    "eventType": "goal",
+    "actor": "Barcelona forward",
+    "team": "Barcelona",
+    "message": "GOAL! Barcelona equalise again.",
+    "scoreDelta": {
+      "home": 0,
+      "away": 1
+    }
+  },
+  {
+    "minute": 78,
+    "period": "2nd half",
+    "eventType": "shot",
+    "actor": "Barcelona winger",
+    "team": "Barcelona",
+    "message": "Dangerous shot goes just wide."
+  }
+]
