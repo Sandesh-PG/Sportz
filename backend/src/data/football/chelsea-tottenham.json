@@ -1,50 +1,277 @@
 [
   {
-    "minute": 14,
+    "minute": 1,
+    "period": "1st half",
+    "eventType": "kickoff",
+    "actor": null,
+    "team": null,
+    "metadata": {},
+    "message": "Kick-off! Chelsea v Tottenham is under way."
+  },
+  {
+    "minute": 18,
+    "period": "1st half",
+    "eventType": "save",
+    "actor": "H. Pemberton",
+    "team": "Chelsea",
+    "metadata": {
+      "shooter": "S. Tindall"
+    },
+    "message": "H. Pemberton (Chelsea) tips the shot round the post."
+  },
+  {
+    "minute": 19,
     "period": "1st half",
     "eventType": "goal",
-    "actor": "Chelsea forward",
+    "actor": "W. Fenwick",
     "team": "Chelsea",
-    "message": "GOAL! Chelsea take the lead.",
-    "scoreDelta": {
-      "home": 1,
-      "away": 0
-    }
+    "metadata": {
+      "scoreDelta": {
+        "home": 1,
+        "away": 0
+      },
+      "assist": "H. Tindall"
+    },
+    "message": "GOAL! W. Fenwick (Chelsea) smashes it past the keeper. Chelsea 1-0 Tottenham.",
+    "tags": [
+      "highlight"
+    ]
+  },
+  {
+    "minute": 28,
+    "period": "1st half",
+    "eventType": "shot",
+    "actor": "W. Whitcombe",
+    "team": "Tottenham",
+    "metadata": {},
+    "message": "W. Whitcombe (Tottenham) blazes it over the bar."
+  },
+  {
+    "minute": 33,
+    "period": "1st half",
+    "eventType": "yellow_card",
+    "actor": "S. Tindall",
+    "team": "Tottenham",
+    "metadata": {},
+    "message": "Yellow card for S. Tindall (Tottenham) for dissent."
+  },
+  {
+    "minute": 35,
+    "period": "1st half",
+    "eventType": "goal",
+    "actor": "F. Thorne",
+    "team": "Chelsea",
+    "metadata": {
+      "scoreDelta": {
+        "home": 1,
+        "away": 0
+      },
+      "assist": "J. Prescott"
+    },
+    "message": "GOAL! F. Thorne (Chelsea) finishes from close range. Chelsea 2-0 Tottenham.",
+    "tags": [
+      "highlight"
+    ]
   },
   {
     "minute": 38,
     "period": "1st half",
-    "eventType": "goal",
-    "actor": "Tottenham forward",
+    "eventType": "yellow_card",
+    "actor": "D. Rushworth",
     "team": "Tottenham",
-    "message": "GOAL! Tottenham equalise.",
-    "scoreDelta": {
-      "home": 0,
-      "away": 1
-    }
+    "metadata": {},
+    "message": "Yellow card for D. Rushworth (Tottenham) for dissent."
+  },
+  {
+    "minute": 40,
+    "period": "1st half",
+    "eventType": "goal",
+    "actor": "W. Fenwick",
+    "team": "Chelsea",
+    "metadata": {
+      "scoreDelta": {
+        "home": 1,
+        "away": 0
+      },
+      "assist": "J. Prescott"
+    },
+    "message": "GOAL! W. Fenwick (Chelsea) heads home from the corner. Chelsea 3-0 Tottenham.",
+    "tags": [
+      "highlight"
+    ]
+  },
+  {
+    "minute": 41,
+    "period": "1st half",
+    "eventType": "shot",
+    "actor": "G. Corrigan",
+    "team": "Chelsea",
+    "metadata": {},
+    "message": "G. Corrigan (Chelsea) sees the effort blocked."
+  },
+  {
+    "minute": 45,
+    "period": "1st half",
+    "eventType": "half_time",
+    "actor": null,
+    "team": null,
+    "metadata": {},
+    "message": "Half time. Chelsea 3-0 Tottenham."
   },
   {
     "minute": 52,
     "period": "2nd half",
-    "eventType": "goal",
-    "actor": "Chelsea forward",
+    "eventType": "yellow_card",
+    "actor": "J. Maddox",
     "team": "Chelsea",
-    "message": "GOAL! Chelsea regain the lead.",
-    "scoreDelta": {
-      "home": 1,
-      "away": 0
-    }
+    "metadata": {},
+    "message": "Yellow card for J. Maddox (Chelsea) for dissent."
   },
   {
-    "minute": 81,
+    "minute": 55,
+    "period": "2nd half",
+    "eventType": "shot",
+    "actor": "J. Prescott",
+    "team": "Chelsea",
+    "metadata": {},
+    "message": "J. Prescott (Chelsea) sees the effort blocked."
+  },
+  {
+    "minute": 59,
+    "period": "2nd half",
+    "eventType": "substitution",
+    "actor": "H. Wyndham",
+    "team": "Tottenham",
+    "metadata": {
+      "playerIn": "H. Wyndham",
+      "playerOut": "W. Whitcombe"
+    },
+    "message": "Substitution (Tottenham): H. Wyndham replaces W. Whitcombe."
+  },
+  {
+    "minute": 61,
+    "period": "2nd half",
+    "eventType": "shot",
+    "actor": "B. Wyndham",
+    "team": "Chelsea",
+    "metadata": {},
+    "message": "B. Wyndham (Chelsea) fires just wide of the post."
+  },
+  {
+    "minute": 61,
+    "period": "2nd half",
+    "eventType": "save",
+    "actor": "H. Pemberton",
+    "team": "Chelsea",
+    "metadata": {
+      "shooter": "S. Tindall"
+    },
+    "message": "H. Pemberton (Chelsea) makes a strong save."
+  },
+  {
+    "minute": 61,
+    "period": "2nd half",
+    "eventType": "substitution",
+    "actor": "A. Garrity",
+    "team": "Chelsea",
+    "metadata": {
+      "playerIn": "A. Garrity",
+      "playerOut": "F. Thorne"
+    },
+    "message": "Substitution (Chelsea): A. Garrity replaces F. Thorne."
+  },
+  {
+    "minute": 66,
     "period": "2nd half",
     "eventType": "goal",
-    "actor": "Chelsea midfielder",
+    "actor": "B. Thorne",
+    "team": "Tottenham",
+    "metadata": {
+      "scoreDelta": {
+        "home": 0,
+        "away": 1
+      },
+      "assist": "W. Whitcombe"
+    },
+    "message": "GOAL! B. Thorne (Tottenham) finishes from close range. Chelsea 3-1 Tottenham.",
+    "tags": [
+      "highlight"
+    ]
+  },
+  {
+    "minute": 67,
+    "period": "2nd half",
+    "eventType": "save",
+    "actor": "H. Pemberton",
     "team": "Chelsea",
-    "message": "GOAL! Chelsea make it 3-1.",
-    "scoreDelta": {
-      "home": 1,
-      "away": 0
-    }
+    "metadata": {
+      "shooter": "C. Garrity"
+    },
+    "message": "H. Pemberton (Chelsea) gets down well to smother it."
+  },
+  {
+    "minute": 73,
+    "period": "2nd half",
+    "eventType": "substitution",
+    "actor": "E. Pemberton",
+    "team": "Tottenham",
+    "metadata": {
+      "playerIn": "E. Pemberton",
+      "playerOut": "B. Thorne"
+    },
+    "message": "Substitution (Tottenham): E. Pemberton replaces B. Thorne."
+  },
+  {
+    "minute": 75,
+    "period": "2nd half",
+    "eventType": "shot",
+    "actor": "J. Prescott",
+    "team": "Chelsea",
+    "metadata": {},
+    "message": "J. Prescott (Chelsea) fires just wide of the post."
+  },
+  {
+    "minute": 76,
+    "period": "2nd half",
+    "eventType": "substitution",
+    "actor": "E. Calloway",
+    "team": "Chelsea",
+    "metadata": {
+      "playerIn": "E. Calloway",
+      "playerOut": "F. Thorne"
+    },
+    "message": "Substitution (Chelsea): E. Calloway replaces F. Thorne."
+  },
+  {
+    "minute": 79,
+    "period": "2nd half",
+    "eventType": "save",
+    "actor": "P. Hartley",
+    "team": "Tottenham",
+    "metadata": {
+      "shooter": "W. Fenwick"
+    },
+    "message": "P. Hartley (Tottenham) palms away a powerful strike."
+  },
+  {
+    "minute": 83,
+    "period": "2nd half",
+    "eventType": "shot",
+    "actor": "B. Wyndham",
+    "team": "Chelsea",
+    "metadata": {},
+    "message": "B. Wyndham (Chelsea) fires just wide of the post."
+  },
+  {
+    "minute": 90,
+    "period": "2nd half",
+    "eventType": "full_time",
+    "actor": null,
+    "team": null,
+    "metadata": {},
+    "message": "Full time. Chelsea 3-1 Tottenham.",
+    "tags": [
+      "highlight"
+    ]
   }
 ]

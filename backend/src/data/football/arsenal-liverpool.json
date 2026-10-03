@@ -1,31 +1,77 @@
 [
   {
-    "minute": 8,
+    "minute": 1,
+    "period": "1st half",
+    "eventType": "kickoff",
+    "actor": null,
+    "team": null,
+    "metadata": {},
+    "message": "Kick-off! Arsenal v Liverpool is under way."
+  },
+  {
+    "minute": 6,
     "period": "1st half",
     "eventType": "shot",
-    "actor": "Bukayo Saka",
-    "team": "Arsenal",
-    "message": "Shot on target saved by the goalkeeper."
-  },
-  {
-    "minute": 19,
-    "period": "1st half",
-    "eventType": "yellow_card",
-    "actor": "Liverpool defender",
+    "actor": "M. Garrity",
     "team": "Liverpool",
-    "message": "Yellow card for a late challenge."
+    "metadata": {},
+    "message": "M. Garrity (Liverpool) blazes it over the bar."
   },
   {
-    "minute": 31,
+    "minute": 11,
     "period": "1st half",
     "eventType": "goal",
-    "actor": "Arsenal forward",
+    "actor": "A. Holloway",
+    "team": "Liverpool",
+    "metadata": {
+      "scoreDelta": {
+        "home": 0,
+        "away": 1
+      },
+      "assist": "V. Calloway"
+    },
+    "message": "GOAL! A. Holloway (Liverpool) tucks away the rebound. Arsenal 0-1 Liverpool.",
+    "tags": [
+      "highlight"
+    ]
+  },
+  {
+    "minute": 16,
+    "period": "1st half",
+    "eventType": "shot",
+    "actor": "T. Whitcombe",
     "team": "Arsenal",
-    "message": "GOAL! Arsenal take the lead.",
-    "scoreDelta": {
-      "home": 1,
-      "away": 0
-    }
+    "metadata": {},
+    "message": "T. Whitcombe (Arsenal) blazes it over the bar."
+  },
+  {
+    "minute": 23,
+    "period": "1st half",
+    "eventType": "save",
+    "actor": "V. Hartley",
+    "team": "Arsenal",
+    "metadata": {
+      "shooter": "A. Holloway"
+    },
+    "message": "V. Hartley (Arsenal) palms away a powerful strike."
+  },
+  {
+    "minute": 23,
+    "period": "1st half",
+    "eventType": "yellow_card",
+    "actor": "W. Langley",
+    "team": "Liverpool",
+    "metadata": {},
+    "message": "Yellow card for W. Langley (Liverpool) for persistent fouling."
+  },
+  {
+    "minute": 43,
+    "period": "1st half",
+    "eventType": "shot",
+    "actor": "A. Holloway",
+    "team": "Liverpool",
+    "metadata": {},
+    "message": "A. Holloway (Liverpool) drags a low shot across goal."
   },
   {
     "minute": 45,
@@ -33,22 +79,181 @@
     "eventType": "half_time",
     "actor": null,
     "team": null,
-    "message": "Half time. Arsenal lead 1-0."
+    "metadata": {},
+    "message": "Half time. Arsenal 0-1 Liverpool."
   },
   {
-    "minute": 58,
-    "period": "2nd half",
-    "eventType": "substitution",
-    "actor": "Arsenal",
-    "team": "Arsenal",
-    "message": "Arsenal make a substitution."
-  },
-  {
-    "minute": 67,
+    "minute": 48,
     "period": "2nd half",
     "eventType": "shot",
-    "actor": "Liverpool forward",
+    "actor": "V. Calloway",
     "team": "Liverpool",
-    "message": "Liverpool test the goalkeeper from distance."
+    "metadata": {},
+    "message": "V. Calloway (Liverpool) drags a low shot across goal."
+  },
+  {
+    "minute": 50,
+    "period": "2nd half",
+    "eventType": "shot",
+    "actor": "V. Ashworth",
+    "team": "Arsenal",
+    "metadata": {},
+    "message": "V. Ashworth (Arsenal) drags a low shot across goal."
+  },
+  {
+    "minute": 53,
+    "period": "2nd half",
+    "eventType": "yellow_card",
+    "actor": "R. Prescott",
+    "team": "Arsenal",
+    "metadata": {},
+    "message": "Yellow card for R. Prescott (Arsenal) for dissent."
+  },
+  {
+    "minute": 54,
+    "period": "2nd half",
+    "eventType": "save",
+    "actor": "W. Fenwick",
+    "team": "Liverpool",
+    "metadata": {
+      "shooter": "V. Bramley"
+    },
+    "message": "W. Fenwick (Liverpool) tips the shot round the post."
+  },
+  {
+    "minute": 55,
+    "period": "2nd half",
+    "eventType": "goal",
+    "actor": "T. Whitcombe",
+    "team": "Arsenal",
+    "metadata": {
+      "scoreDelta": {
+        "home": 1,
+        "away": 0
+      },
+      "assist": "R. Prescott"
+    },
+    "message": "GOAL! T. Whitcombe (Arsenal) tucks away the rebound. Arsenal 1-1 Liverpool.",
+    "tags": [
+      "highlight"
+    ]
+  },
+  {
+    "minute": 56,
+    "period": "2nd half",
+    "eventType": "save",
+    "actor": "V. Hartley",
+    "team": "Arsenal",
+    "metadata": {
+      "shooter": "M. Garrity"
+    },
+    "message": "V. Hartley (Arsenal) palms away a powerful strike."
+  },
+  {
+    "minute": 60,
+    "period": "2nd half",
+    "eventType": "substitution",
+    "actor": "E. Prescott",
+    "team": "Liverpool",
+    "metadata": {
+      "playerIn": "E. Prescott",
+      "playerOut": "M. Garrity"
+    },
+    "message": "Substitution (Liverpool): E. Prescott replaces M. Garrity."
+  },
+  {
+    "minute": 66,
+    "period": "2nd half",
+    "eventType": "substitution",
+    "actor": "A. Holloway",
+    "team": "Arsenal",
+    "metadata": {
+      "playerIn": "A. Holloway",
+      "playerOut": "V. Bramley"
+    },
+    "message": "Substitution (Arsenal): A. Holloway replaces V. Bramley."
+  },
+  {
+    "minute": 68,
+    "period": "2nd half",
+    "eventType": "substitution",
+    "actor": "J. Thorne",
+    "team": "Arsenal",
+    "metadata": {
+      "playerIn": "J. Thorne",
+      "playerOut": "S. Tindall"
+    },
+    "message": "Substitution (Arsenal): J. Thorne replaces S. Tindall."
+  },
+  {
+    "minute": 70,
+    "period": "2nd half",
+    "eventType": "shot",
+    "actor": "T. Whitcombe",
+    "team": "Arsenal",
+    "metadata": {},
+    "message": "T. Whitcombe (Arsenal) blazes it over the bar."
+  },
+  {
+    "minute": 76,
+    "period": "2nd half",
+    "eventType": "goal",
+    "actor": "R. Prescott",
+    "team": "Arsenal",
+    "metadata": {
+      "scoreDelta": {
+        "home": 1,
+        "away": 0
+      },
+      "assist": "T. Whitcombe"
+    },
+    "message": "GOAL! R. Prescott (Arsenal) heads home from the corner. Arsenal 2-1 Liverpool.",
+    "tags": [
+      "highlight"
+    ]
+  },
+  {
+    "minute": 77,
+    "period": "2nd half",
+    "eventType": "substitution",
+    "actor": "B. Thorne",
+    "team": "Liverpool",
+    "metadata": {
+      "playerIn": "B. Thorne",
+      "playerOut": "M. Garrity"
+    },
+    "message": "Substitution (Liverpool): B. Thorne replaces M. Garrity."
+  },
+  {
+    "minute": 78,
+    "period": "2nd half",
+    "eventType": "save",
+    "actor": "V. Hartley",
+    "team": "Arsenal",
+    "metadata": {
+      "shooter": "W. Maddox"
+    },
+    "message": "V. Hartley (Arsenal) makes a strong save."
+  },
+  {
+    "minute": 87,
+    "period": "2nd half",
+    "eventType": "yellow_card",
+    "actor": "R. Prescott",
+    "team": "Arsenal",
+    "metadata": {},
+    "message": "Yellow card for R. Prescott (Arsenal) for persistent fouling."
+  },
+  {
+    "minute": 90,
+    "period": "2nd half",
+    "eventType": "full_time",
+    "actor": null,
+    "team": null,
+    "metadata": {},
+    "message": "Full time. Arsenal 2-1 Liverpool.",
+    "tags": [
+      "highlight"
+    ]
   }
 ]

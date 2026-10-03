@@ -54,44 +54,81 @@ export default function MatchDetails() {
     (candidate) => Number(matchId) === candidate.id,
   );
 
-  useMatchWebSocket(
-    match?.status === 'live' ? matchId : null,
-    (message) => {
-      if (message?.type !== 'commentary_update') {
-        return;
+const {
+  isConnected,
+  isSubscribed,
+  subscribe,
+  unsubscribe,
+} = useMatchWebSocket(
+  matchId,
+  (message) => {
+    if (message?.type === 'score_update') {
+      const updated = message.data;
+
+      if (!updated) return;
+
+      setMatches((current) =>
+        current.map((item) =>
+          item.id === updated.matchId
+            ? {
+                ...item,
+                homeScore: updated.homeScore,
+                awayScore: updated.awayScore,
+                score: updated.score,
+                status: updated.status,
+              }
+            : item,
+        ),
+      );
+
+      return;
+    }
+
+    if (message?.type === 'match_updated') {
+      const updated = message.data;
+
+      if (!updated) return;
+
+      setMatches((current) =>
+        current.map((item) =>
+          item.id === updated.id ? updated : item,
+        ),
+      );
+
+      return;
+    }
+
+    if (message?.type !== 'commentary_update') {
+      return;
+    }
+
+    const event = message.data;
+
+    if (!event) return;
+
+    setCommentary((current) => {
+      const exists = current.some(
+        (item) => item.id === event.id,
+      );
+
+      if (exists) {
+        return current;
       }
 
-      const event = message.data;
+      return [event, ...current];
+    });
 
-      if (!event) {
-        return;
-      }
-
-      // Add the new commentary event.
-      setCommentary((current) => {
-        const exists = current.some(
-          (item) => item.id === event.id,
-        );
-
-        if (exists) {
-          return current;
-        }
-
-        return [event, ...current];
-      });
-
-      // Update the live score from the backend.
-      if (event.match) {
-        setMatches((current) =>
-          current.map((item) =>
-            item.id === event.match.id
-              ? event.match
-              : item,
-          ),
-        );
-      }
-    },
-  );
+    if (event.match) {
+      setMatches((current) =>
+        current.map((item) =>
+          item.id === event.match.id
+            ? event.match
+            : item,
+        ),
+      );
+    }
+  },
+);
 
   if (loading) {
     return (
@@ -119,29 +156,26 @@ export default function MatchDetails() {
 
   if (!match) {
     return (
-      <div className="app-shell not-found-shell">
-        <main className="not-found-page">
-          <p className="eyebrow">
-            <span className="eyebrow-line" />
-            404 · Match centre
-          </p>
+      <div className="detail-topbar">
+      <button
+        className="back-link"
+        onClick={onBack}
+        type="button"
+      >
+        ← Back to matches
+      </button>
 
-          <h1>
-            Match not found<span className="accent-dot">.</span>
-          </h1>
-
-          <p className="hero-description">
-            That fixture is not part of the curre nt local scoreboard.
-          </p>
-
-          <Link
-            className="back-link not-found-link"
-            to="/matches"
-          >
-            ← Back to matches
-          </Link>
-        </main>
+      <div className="detail-actions">
+        <button
+          className="subscribe-button"
+          type="button"
+          disabled={!isConnected}
+          onClick={isSubscribed ? unsubscribe : subscribe}
+        >
+          {isSubscribed ? '✓ Subscribed' : 'Subscribe'}
+        </button>
       </div>
+    </div>
     );
   }
 
@@ -152,12 +186,19 @@ export default function MatchDetails() {
           match={match}
           events={commentary}
           onBack={() => navigate('/matches')}
+          
         />
       ) : (
         <CricketMatchView
           match={match}
           events={commentary}
           onBack={() => navigate('/matches')}
+           subscription={{
+            isConnected,
+            isSubscribed,
+            subscribe,
+            unsubscribe,
+          }}
         />
       )}
     </div>

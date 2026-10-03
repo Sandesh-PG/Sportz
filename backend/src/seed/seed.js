@@ -1,215 +1,117 @@
-import "dotenv/config";
-import fs from "fs/promises";
-import path from "path";
-import { fileURLToPath } from "url";
+import 'dotenv/config';
+import fs from 'fs/promises';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-import { db } from "../db/db.js";
-import { commentary, matches } from "../db/schema.js";
+import { db } from '../db/db.js';
+import { commentary, matches } from '../db/schema.js';
+import { revealDue } from '../services/liveEngine.js';
+import { getMatchStatus } from '../utils/matches-status.js';
+import { computeWindow } from '../utils/schedule.js';
+import { getInitialScore, isCricket, toTotals } from '../utils/scoring.js';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const DATA_DIR = path.join(__dirname, '../data');
 
-const DATA_DIR = path.join(__dirname, "../data");
+const readJson = async (p) => JSON.parse(await fs.readFile(p, 'utf8'));
 
-async function readJson(filePath) {
-  const raw = await fs.readFile(filePath, "utf8");
-  return JSON.parse(raw);
+// Seconds into the match at which an event becomes visible.
+//  football: proportional to the match minute (90' + stoppage ~ 95')
+//  cricket : spread evenly across the live window
+function offsetFor(fixture, event, index, total) {
+  const live = fixture.liveMinutes * 60;
+  const fraction = isCricket(fixture.sport)
+    ? (index + 1) / (total + 1)
+    : Math.min(0.97, Math.max(0.01, Number(event.minute ?? 0) / 95));
+  return Math.max(1, Math.round(fraction * live));
 }
 
-function buildTimes(match) {
-  const now = Date.now();
-
-  const startTime = new Date(
-    now + match.startOffsetMinutes * 60 * 1000,
-  );
-
-  const endTime = new Date(
-    startTime.getTime() + match.durationMinutes * 60 * 1000,
-  );
-
-  return { startTime, endTime };
-}
-
-function getCommentaryFile(match) {
-  const sport = match.sport.toLowerCase();
-
-  return path.join(
-    DATA_DIR,
-    sport,
-    `${match.id}.json`,
-  );
-}
-
-function getEventMinute(event) {
-  if (event.minute !== undefined && event.minute !== null) {
-    return Number(event.minute);
-  }
-
-  if (event.over !== undefined && event.over !== null) {
-    return Number.parseFloat(event.over);
-  }
-
-  return 0;
-}
-
-function calculateScore(events, startTime) {
-  const now = Date.now();
-
-  let homeScore = 0;
-  let awayScore = 0;
-
-  for (const event of events) {
-    const minute = getEventMinute(event);
-
-    const eventTime = new Date(
-      startTime.getTime() + minute * 60 * 1000,
-    );
-
-    if (eventTime > now) {
-      continue;
-    }
-
-    const scoreDelta = event.scoreDelta;
-
-    if (!scoreDelta) {
-      continue;
-    }
-
-    homeScore += Number(scoreDelta.home || 0);
-    awayScore += Number(scoreDelta.away || 0);
-  }
-
+function toRow(fixture, event, index, total) {
   return {
-    homeScore,
-    awayScore,
+    minute: Math.floor(Number(event.minute ?? 0)),
+    sequence: index + 1,
+    offsetSeconds: offsetFor(fixture, event, index, total),
+    period: event.period ?? 'match',
+    eventType: event.eventType ?? 'update',
+    actor: event.actor ?? null,
+    team: event.team ?? null,
+    message: event.message ?? 'Match update',
+    metadata: event.metadata ?? {},
+    tags: event.tags ?? null,
   };
 }
 
-async function seedMatch(match) {
-  const { startTime, endTime } = buildTimes(match);
+async function seedFixture(fixture, slots) {
+  const meta = {
+    slug: fixture.id,
+    slot: fixture.slot,
+    slots,
+    liveMinutes: fixture.liveMinutes,
+    ...(fixture.maxOvers ? { maxOvers: fixture.maxOvers } : {}),
+  };
 
-  const commentaryFile = getCommentaryFile(match);
+  const { startTime, endTime } = computeWindow(meta);
+  const status = getMatchStatus(startTime, endTime);
 
   let events = [];
-
   try {
-    events = await readJson(commentaryFile);
+    events = await readJson(path.join(DATA_DIR, fixture.sport, `${fixture.id}.json`));
   } catch {
-    console.log(`⚠️ No commentary file for ${match.id}`);
+    console.log(`⚠️ No commentary file for ${fixture.id} (run: node scripts/generate-data.js)`);
   }
 
-  if (!Array.isArray(events)) {
-    events = [];
-  }
+  const score = getInitialScore(fixture.sport);
 
-  const score = calculateScore(events, startTime);
-
-  console.log(
-    `🏟️ ${match.homeTeam} vs ${match.awayTeam}`,
-  );
-
-  console.log(
-    `   Start: ${startTime.toISOString()}`,
-  );
-
-  console.log(
-    `   End:   ${endTime.toISOString()}`,
-  );
-
-  console.log(
-    `   Score: ${score.homeScore}-${score.awayScore}`,
-  );
-
-  const [createdMatch] = await db
+  const [created] = await db
     .insert(matches)
     .values({
-      sport: match.sport,
-      homeTeam: match.homeTeam,
-      awayTeam: match.awayTeam,
-      status: match.status,
+      sport: fixture.sport,
+      homeTeam: fixture.homeTeam,
+      awayTeam: fixture.awayTeam,
+      competition: fixture.competition,
+      venue: fixture.venue,
+      status,
       startTime,
       endTime,
-      homeScore: score.homeScore,
-      awayScore: score.awayScore,
+      score,
+      ...toTotals(fixture.sport, score),
+      currentSequence: 0,
+      meta,
     })
     .returning();
 
-  console.log(`   Match ID: ${createdMatch.id}`);
-
-  if (events.length === 0) {
-    console.log("   No commentary events.");
-    return;
+  if (events.length > 0) {
+    const rows = events.map((e, i) => toRow(fixture, e, i, events.length));
+    await db.insert(commentary).values(rows.map((r) => ({ ...r, matchId: created.id })));
   }
 
-  const commentaryRows = events.map((event, index) => {
-    const minute = getEventMinute(event);
+  // Bring the match to where the clock says it should be (finished -> everything revealed).
+  const revealed = await revealDue(created);
 
-    const eventTime = new Date(
-      startTime.getTime() + minute * 60 * 1000,
-    );
-
-    return {
-      matchId: createdMatch.id,
-      minute: Math.floor(minute),
-      sequence: index + 1,
-      period: event.period ?? "match",
-      eventType: event.eventType ?? "update",
-      actor: event.actor ?? null,
-      team: event.team ?? null,
-      message: event.message ?? "Match update",
-
-      metadata: {
-        ...(event.metadata ?? {}),
-        ...(event.scoreDelta
-          ? { scoreDelta: event.scoreDelta }
-          : {}),
-        ...(event.runs !== undefined
-          ? { runs: event.runs }
-          : {}),
-        ...(event.wicket !== undefined
-          ? { wicket: event.wicket }
-          : {}),
-        ...(event.over !== undefined
-          ? { over: event.over }
-          : {}),
-      },
-
-      tags: event.tags ?? null,
-
-      createdAt: eventTime,
-    };
-  });
-
-  await db
-    .insert(commentary)
-    .values(commentaryRows);
-
-  console.log(
-    `   📣 Inserted ${commentaryRows.length} commentary events`,
-  );
+  console.log(`🏟️  #${created.id} ${fixture.homeTeam} v ${fixture.awayTeam} [${status}] ${events.length} events, ${revealed} revealed`);
 }
 
 async function seed() {
-  console.log("🌱 Starting Sportz database seed...\n");
+  console.log('🌱 Seeding Sportz...\n');
 
-  const matchesData = await readJson(
-    path.join(DATA_DIR, "matches.json"),
-  );
-
-  if (!Array.isArray(matchesData)) {
-    throw new Error("matches.json must contain an array.");
+  // node src/seed/seed.js --reset  -> wipe matches first (commentary cascades)
+  if (process.argv.includes('--reset')) {
+    await db.delete(matches);
+    console.log('🧹 Cleared existing matches and commentary\n');
   }
 
-  for (const match of matchesData) {
-    await seedMatch(match);
-    console.log("");
+  const fixtures = await readJson(path.join(DATA_DIR, 'matches.json'));
+  if (!Array.isArray(fixtures)) throw new Error('matches.json must contain an array.');
+
+  for (const fixture of fixtures) {
+    await seedFixture(fixture, fixtures.length);
   }
 
-  console.log("✅ Database seed completed.");
+  console.log('\n✅ Seed completed.');
+  process.exit(0);
 }
 
 seed().catch((error) => {
-  console.error("❌ Seed failed:");
-  console.error(error);
+  console.error('❌ Seed failed:', error);
   process.exit(1);
 });

@@ -1,35 +1,126 @@
 [
   {
-    "minute": 11,
+    "minute": 1,
+    "period": "1st half",
+    "eventType": "kickoff",
+    "actor": null,
+    "team": null,
+    "metadata": {},
+    "message": "Kick-off! Real Madrid v Barcelona is under way."
+  },
+  {
+    "minute": 6,
     "period": "1st half",
     "eventType": "goal",
-    "actor": "Real Madrid forward",
+    "actor": "R. Olmedo",
+    "team": "Barcelona",
+    "metadata": {
+      "scoreDelta": {
+        "home": 0,
+        "away": 1
+      },
+      "assist": "T. Salvatierra"
+    },
+    "message": "GOAL! R. Olmedo (Barcelona) curls it into the corner. Real Madrid 0-1 Barcelona.",
+    "tags": [
+      "highlight"
+    ]
+  },
+  {
+    "minute": 17,
+    "period": "1st half",
+    "eventType": "save",
+    "actor": "M. Maldonado",
+    "team": "Barcelona",
+    "metadata": {
+      "shooter": "K. Linares"
+    },
+    "message": "M. Maldonado (Barcelona) gets down well to smother it."
+  },
+  {
+    "minute": 18,
+    "period": "1st half",
+    "eventType": "shot",
+    "actor": "J. Montoya",
+    "team": "Barcelona",
+    "metadata": {},
+    "message": "J. Montoya (Barcelona) sees the effort blocked."
+  },
+  {
+    "minute": 18,
+    "period": "1st half",
+    "eventType": "save",
+    "actor": "A. Zamora",
     "team": "Real Madrid",
-    "message": "GOAL! Real Madrid open the scoring.",
-    "scoreDelta": {
-      "home": 1,
-      "away": 0
-    }
+    "metadata": {
+      "shooter": "J. Zamora"
+    },
+    "message": "A. Zamora (Real Madrid) palms away a powerful strike."
   },
   {
     "minute": 27,
     "period": "1st half",
-    "eventType": "goal",
-    "actor": "Barcelona forward",
+    "eventType": "shot",
+    "actor": "P. Ferrer",
     "team": "Barcelona",
-    "message": "GOAL! Barcelona equalise.",
-    "scoreDelta": {
-      "home": 0,
-      "away": 1
-    }
+    "metadata": {},
+    "message": "P. Ferrer (Barcelona) fires just wide of the post."
+  },
+  {
+    "minute": 27,
+    "period": "1st half",
+    "eventType": "yellow_card",
+    "actor": "V. Bustamante",
+    "team": "Barcelona",
+    "metadata": {},
+    "message": "Yellow card for V. Bustamante (Barcelona) for dissent."
+  },
+  {
+    "minute": 32,
+    "period": "1st half",
+    "eventType": "goal",
+    "actor": "C. Quintero",
+    "team": "Real Madrid",
+    "metadata": {
+      "scoreDelta": {
+        "home": 1,
+        "away": 0
+      },
+      "assist": "T. Oropeza"
+    },
+    "message": "GOAL! C. Quintero (Real Madrid) finishes from close range. Real Madrid 1-1 Barcelona.",
+    "tags": [
+      "highlight"
+    ]
+  },
+  {
+    "minute": 36,
+    "period": "1st half",
+    "eventType": "shot",
+    "actor": "T. Salvatierra",
+    "team": "Barcelona",
+    "metadata": {},
+    "message": "T. Salvatierra (Barcelona) sees the effort blocked."
+  },
+  {
+    "minute": 38,
+    "period": "1st half",
+    "eventType": "shot",
+    "actor": "G. Cordero",
+    "team": "Real Madrid",
+    "metadata": {},
+    "message": "G. Cordero (Real Madrid) drags a low shot across goal."
   },
   {
     "minute": 42,
     "period": "1st half",
-    "eventType": "yellow_card",
-    "actor": "Real Madrid midfielder",
+    "eventType": "save",
+    "actor": "A. Zamora",
     "team": "Real Madrid",
-    "message": "Yellow card."
+    "metadata": {
+      "shooter": "T. Salvatierra"
+    },
+    "message": "A. Zamora (Real Madrid) tips the shot round the post."
   },
   {
     "minute": 45,
@@ -37,38 +128,150 @@
     "eventType": "half_time",
     "actor": null,
     "team": null,
-    "message": "Half time. Scores are level."
+    "metadata": {},
+    "message": "Half time. Real Madrid 1-1 Barcelona."
   },
   {
-    "minute": 61,
+    "minute": 49,
     "period": "2nd half",
-    "eventType": "goal",
-    "actor": "Real Madrid forward",
-    "team": "Real Madrid",
-    "message": "GOAL! Real Madrid restore their lead.",
-    "scoreDelta": {
-      "home": 1,
-      "away": 0
-    }
-  },
-  {
-    "minute": 73,
-    "period": "2nd half",
-    "eventType": "goal",
-    "actor": "Barcelona forward",
+    "eventType": "save",
+    "actor": "M. Maldonado",
     "team": "Barcelona",
-    "message": "GOAL! Barcelona equalise again.",
-    "scoreDelta": {
-      "home": 0,
-      "away": 1
-    }
+    "metadata": {
+      "shooter": "K. Linares"
+    },
+    "message": "M. Maldonado (Barcelona) tips the shot round the post."
   },
   {
-    "minute": 78,
+    "minute": 50,
+    "period": "2nd half",
+    "eventType": "yellow_card",
+    "actor": "W. Villalba",
+    "team": "Real Madrid",
+    "metadata": {},
+    "message": "Yellow card for W. Villalba (Real Madrid) for dissent."
+  },
+  {
+    "minute": 59,
+    "period": "2nd half",
+    "eventType": "goal",
+    "actor": "T. Salvatierra",
+    "team": "Barcelona",
+    "metadata": {
+      "scoreDelta": {
+        "home": 0,
+        "away": 1
+      },
+      "assist": "R. Olmedo"
+    },
+    "message": "GOAL! T. Salvatierra (Barcelona) smashes it past the keeper. Real Madrid 1-2 Barcelona.",
+    "tags": [
+      "highlight"
+    ]
+  },
+  {
+    "minute": 60,
+    "period": "2nd half",
+    "eventType": "substitution",
+    "actor": "D. Linares",
+    "team": "Barcelona",
+    "metadata": {
+      "playerIn": "D. Linares",
+      "playerOut": "P. Ferrer"
+    },
+    "message": "Substitution (Barcelona): D. Linares replaces P. Ferrer."
+  },
+  {
+    "minute": 62,
+    "period": "2nd half",
+    "eventType": "substitution",
+    "actor": "K. Maldonado",
+    "team": "Real Madrid",
+    "metadata": {
+      "playerIn": "K. Maldonado",
+      "playerOut": "T. Oropeza"
+    },
+    "message": "Substitution (Real Madrid): K. Maldonado replaces T. Oropeza."
+  },
+  {
+    "minute": 62,
+    "period": "2nd half",
+    "eventType": "substitution",
+    "actor": "A. Almagro",
+    "team": "Barcelona",
+    "metadata": {
+      "playerIn": "A. Almagro",
+      "playerOut": "J. Zamora"
+    },
+    "message": "Substitution (Barcelona): A. Almagro replaces J. Zamora."
+  },
+  {
+    "minute": 69,
+    "period": "2nd half",
+    "eventType": "goal",
+    "actor": "K. Linares",
+    "team": "Real Madrid",
+    "metadata": {
+      "scoreDelta": {
+        "home": 1,
+        "away": 0
+      },
+      "assist": "T. Oropeza"
+    },
+    "message": "GOAL! K. Linares (Real Madrid) finishes from close range. Real Madrid 2-2 Barcelona.",
+    "tags": [
+      "highlight"
+    ]
+  },
+  {
+    "minute": 70,
     "period": "2nd half",
     "eventType": "shot",
-    "actor": "Barcelona winger",
+    "actor": "T. Salvatierra",
     "team": "Barcelona",
-    "message": "Dangerous shot goes just wide."
+    "metadata": {},
+    "message": "T. Salvatierra (Barcelona) drags a low shot across goal."
+  },
+  {
+    "minute": 70,
+    "period": "2nd half",
+    "eventType": "shot",
+    "actor": "R. Olmedo",
+    "team": "Barcelona",
+    "metadata": {},
+    "message": "R. Olmedo (Barcelona) drags a low shot across goal."
+  },
+  {
+    "minute": 75,
+    "period": "2nd half",
+    "eventType": "substitution",
+    "actor": "T. Olmedo",
+    "team": "Real Madrid",
+    "metadata": {
+      "playerIn": "T. Olmedo",
+      "playerOut": "D. Salvatierra"
+    },
+    "message": "Substitution (Real Madrid): T. Olmedo replaces D. Salvatierra."
+  },
+  {
+    "minute": 88,
+    "period": "2nd half",
+    "eventType": "yellow_card",
+    "actor": "A. Ferrer",
+    "team": "Real Madrid",
+    "metadata": {},
+    "message": "Yellow card for A. Ferrer (Real Madrid) for persistent fouling."
+  },
+  {
+    "minute": 90,
+    "period": "2nd half",
+    "eventType": "full_time",
+    "actor": null,
+    "team": null,
+    "metadata": {},
+    "message": "Full time. Real Madrid 2-2 Barcelona.",
+    "tags": [
+      "highlight"
+    ]
   }
 ]

@@ -1,34 +1,241 @@
 [
   {
+    "minute": 1,
+    "period": "1st half",
+    "eventType": "kickoff",
+    "actor": null,
+    "team": null,
+    "metadata": {},
+    "message": "Kick-off! AC Milan v Inter Milan is under way."
+  },
+  {
+    "minute": 12,
+    "period": "1st half",
+    "eventType": "shot",
+    "actor": "E. Cattaneo",
+    "team": "Inter Milan",
+    "metadata": {},
+    "message": "E. Cattaneo (Inter Milan) fires just wide of the post."
+  },
+  {
+    "minute": 13,
+    "period": "1st half",
+    "eventType": "shot",
+    "actor": "E. Cattaneo",
+    "team": "Inter Milan",
+    "metadata": {},
+    "message": "E. Cattaneo (Inter Milan) fires just wide of the post."
+  },
+  {
+    "minute": 21,
+    "period": "1st half",
+    "eventType": "shot",
+    "actor": "F. Orsini",
+    "team": "Inter Milan",
+    "metadata": {},
+    "message": "F. Orsini (Inter Milan) drags a low shot across goal."
+  },
+  {
+    "minute": 22,
+    "period": "1st half",
+    "eventType": "yellow_card",
+    "actor": "F. Orsini",
+    "team": "Inter Milan",
+    "metadata": {},
+    "message": "Yellow card for F. Orsini (Inter Milan) for dissent."
+  },
+  {
     "minute": 24,
     "period": "1st half",
-    "eventType": "goal",
-    "actor": "AC Milan forward",
-    "team": "AC Milan",
-    "message": "GOAL! Milan lead.",
-    "scoreDelta": {
-      "home": 1,
-      "away": 0
-    }
+    "eventType": "yellow_card",
+    "actor": "T. Marchetti",
+    "team": "Inter Milan",
+    "metadata": {},
+    "message": "Yellow card for T. Marchetti (Inter Milan) for a mistimed tackle."
   },
   {
-    "minute": 67,
+    "minute": 29,
+    "period": "1st half",
+    "eventType": "shot",
+    "actor": "P. Ferraro",
+    "team": "Inter Milan",
+    "metadata": {},
+    "message": "P. Ferraro (Inter Milan) drags a low shot across goal."
+  },
+  {
+    "minute": 30,
+    "period": "1st half",
+    "eventType": "goal",
+    "actor": "F. Orsini",
+    "team": "Inter Milan",
+    "metadata": {
+      "scoreDelta": {
+        "home": 0,
+        "away": 1
+      },
+      "assist": "L. Rinaldi"
+    },
+    "message": "GOAL! F. Orsini (Inter Milan) smashes it past the keeper. AC Milan 0-1 Inter Milan.",
+    "tags": [
+      "highlight"
+    ]
+  },
+  {
+    "minute": 39,
+    "period": "1st half",
+    "eventType": "save",
+    "actor": "K. Palumbo",
+    "team": "Inter Milan",
+    "metadata": {
+      "shooter": "P. Marchetti"
+    },
+    "message": "K. Palumbo (Inter Milan) makes a strong save."
+  },
+  {
+    "minute": 45,
+    "period": "1st half",
+    "eventType": "half_time",
+    "actor": null,
+    "team": null,
+    "metadata": {},
+    "message": "Half time. AC Milan 0-1 Inter Milan."
+  },
+  {
+    "minute": 61,
+    "period": "2nd half",
+    "eventType": "substitution",
+    "actor": "E. Sartori",
+    "team": "AC Milan",
+    "metadata": {
+      "playerIn": "E. Sartori",
+      "playerOut": "P. Marchetti"
+    },
+    "message": "Substitution (AC Milan): E. Sartori replaces P. Marchetti."
+  },
+  {
+    "minute": 62,
+    "period": "2nd half",
+    "eventType": "substitution",
+    "actor": "N. Lombardi",
+    "team": "Inter Milan",
+    "metadata": {
+      "playerIn": "N. Lombardi",
+      "playerOut": "E. Cattaneo"
+    },
+    "message": "Substitution (Inter Milan): N. Lombardi replaces E. Cattaneo."
+  },
+  {
+    "minute": 66,
+    "period": "2nd half",
+    "eventType": "save",
+    "actor": "T. Benedetti",
+    "team": "AC Milan",
+    "metadata": {
+      "shooter": "E. Cattaneo"
+    },
+    "message": "T. Benedetti (AC Milan) tips the shot round the post."
+  },
+  {
+    "minute": 70,
+    "period": "2nd half",
+    "eventType": "save",
+    "actor": "K. Palumbo",
+    "team": "Inter Milan",
+    "metadata": {
+      "shooter": "M. Vitale"
+    },
+    "message": "K. Palumbo (Inter Milan) gets down well to smother it."
+  },
+  {
+    "minute": 71,
     "period": "2nd half",
     "eventType": "yellow_card",
-    "actor": "Inter midfielder",
+    "actor": "W. Santoro",
     "team": "Inter Milan",
-    "message": "Yellow card."
+    "metadata": {},
+    "message": "Yellow card for W. Santoro (Inter Milan) for a mistimed tackle."
   },
   {
-    "minute": 84,
+    "minute": 74,
     "period": "2nd half",
     "eventType": "goal",
-    "actor": "Inter forward",
+    "actor": "S. Santoro",
+    "team": "AC Milan",
+    "metadata": {
+      "scoreDelta": {
+        "home": 1,
+        "away": 0
+      },
+      "assist": "J. Moretti"
+    },
+    "message": "GOAL! S. Santoro (AC Milan) heads home from the corner. AC Milan 1-1 Inter Milan.",
+    "tags": [
+      "highlight"
+    ]
+  },
+  {
+    "minute": 76,
+    "period": "2nd half",
+    "eventType": "shot",
+    "actor": "C. Greco",
+    "team": "AC Milan",
+    "metadata": {},
+    "message": "C. Greco (AC Milan) blazes it over the bar."
+  },
+  {
+    "minute": 79,
+    "period": "2nd half",
+    "eventType": "substitution",
+    "actor": "L. Fontana",
     "team": "Inter Milan",
-    "message": "GOAL! Inter equalise.",
-    "scoreDelta": {
-      "home": 0,
-      "away": 1
-    }
+    "metadata": {
+      "playerIn": "L. Fontana",
+      "playerOut": "P. Ferraro"
+    },
+    "message": "Substitution (Inter Milan): L. Fontana replaces P. Ferraro."
+  },
+  {
+    "minute": 82,
+    "period": "2nd half",
+    "eventType": "substitution",
+    "actor": "B. Bellandi",
+    "team": "AC Milan",
+    "metadata": {
+      "playerIn": "B. Bellandi",
+      "playerOut": "J. Orsini"
+    },
+    "message": "Substitution (AC Milan): B. Bellandi replaces J. Orsini."
+  },
+  {
+    "minute": 86,
+    "period": "2nd half",
+    "eventType": "save",
+    "actor": "T. Benedetti",
+    "team": "AC Milan",
+    "metadata": {
+      "shooter": "M. Costanzo"
+    },
+    "message": "T. Benedetti (AC Milan) palms away a powerful strike."
+  },
+  {
+    "minute": 87,
+    "period": "2nd half",
+    "eventType": "shot",
+    "actor": "W. Santoro",
+    "team": "Inter Milan",
+    "metadata": {},
+    "message": "W. Santoro (Inter Milan) fires just wide of the post."
+  },
+  {
+    "minute": 90,
+    "period": "2nd half",
+    "eventType": "full_time",
+    "actor": null,
+    "team": null,
+    "metadata": {},
+    "message": "Full time. AC Milan 1-1 Inter Milan.",
+    "tags": [
+      "highlight"
+    ]
   }
 ]

@@ -2,89 +2,84 @@
   {
     "id": "arsenal-liverpool",
     "sport": "football",
+    "competition": "Premier League · Matchday 28",
+    "venue": "Emirates Stadium, London",
     "homeTeam": "Arsenal",
     "awayTeam": "Liverpool",
-    "status": "live",
-    "startOffsetMinutes": -67,
-    "durationMinutes": 95,
-    "homeScore": 1,
-    "awayScore": 0
-  },
-  {
-    "id": "real-barcelona",
-    "sport": "football",
-    "homeTeam": "Real Madrid",
-    "awayTeam": "Barcelona",
-    "status": "live",
-    "startOffsetMinutes": -78,
-    "durationMinutes": 95,
-    "homeScore": 2,
-    "awayScore": 2
+    "slot": 0,
+    "liveMinutes": 12
   },
   {
     "id": "india-australia",
     "sport": "cricket",
+    "competition": "ICC Champions Trophy · Group A",
+    "venue": "Dubai International Stadium",
     "homeTeam": "India",
     "awayTeam": "Australia",
-    "status": "live",
-    "startOffsetMinutes": -145,
-    "durationMinutes": 240,
-    "homeScore": 142,
-    "awayScore": 0
+    "slot": 1,
+    "liveMinutes": 16,
+    "maxOvers": 20
+  },
+  {
+    "id": "real-barcelona",
+    "sport": "football",
+    "competition": "La Liga · El Clasico",
+    "venue": "Santiago Bernabeu, Madrid",
+    "homeTeam": "Real Madrid",
+    "awayTeam": "Barcelona",
+    "slot": 2,
+    "liveMinutes": 12
   },
   {
     "id": "man-city-chelsea",
     "sport": "football",
+    "competition": "Premier League · Matchday 28",
+    "venue": "Etihad Stadium, Manchester",
     "homeTeam": "Manchester City",
     "awayTeam": "Chelsea",
-    "status": "scheduled",
-    "startOffsetMinutes": 35,
-    "durationMinutes": 95,
-    "homeScore": 0,
-    "awayScore": 0
+    "slot": 3,
+    "liveMinutes": 12
   },
   {
     "id": "nepal-netherlands",
     "sport": "cricket",
+    "competition": "ICC T20 World Cup · Group B",
+    "venue": "Kirtipur Oval, Kathmandu",
     "homeTeam": "Nepal",
     "awayTeam": "Netherlands",
-    "status": "scheduled",
-    "startOffsetMinutes": 90,
-    "durationMinutes": 240,
-    "homeScore": 0,
-    "awayScore": 0
+    "slot": 4,
+    "liveMinutes": 16,
+    "maxOvers": 20
   },
   {
     "id": "chelsea-tottenham",
     "sport": "football",
+    "competition": "Premier League · Matchday 27",
+    "venue": "Stamford Bridge, London",
     "homeTeam": "Chelsea",
     "awayTeam": "Tottenham",
-    "status": "finished",
-    "startOffsetMinutes": -210,
-    "durationMinutes": 95,
-    "homeScore": 3,
-    "awayScore": 1
+    "slot": 5,
+    "liveMinutes": 12
   },
   {
     "id": "england-south-africa",
     "sport": "cricket",
+    "competition": "ICC T20 World Cup · Group C",
+    "venue": "Lord's, London",
     "homeTeam": "England",
     "awayTeam": "South Africa",
-    "status": "finished",
-    "startOffsetMinutes": -420,
-    "durationMinutes": 240,
-    "homeScore": 187,
-    "awayScore": 181
+    "slot": 6,
+    "liveMinutes": 16,
+    "maxOvers": 20
   },
   {
     "id": "milan-inter",
     "sport": "football",
+    "competition": "Serie A · Derby della Madonnina",
+    "venue": "San Siro, Milan",
     "homeTeam": "AC Milan",
     "awayTeam": "Inter Milan",
-    "status": "finished",
-    "startOffsetMinutes": -300,
-    "durationMinutes": 95,
-    "homeScore": 1,
-    "awayScore": 1
+    "slot": 7,
+    "liveMinutes": 12
   }
 ]

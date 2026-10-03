@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 const WS_ENDPOINT = import.meta.env.DEV
   ? 'ws://localhost:10000/ws'
@@ -7,6 +7,9 @@ const WS_ENDPOINT = import.meta.env.DEV
 export default function useMatchWebSocket(matchId, onMessage) {
   const socketRef = useRef(null);
   const onMessageRef = useRef(onMessage);
+
+  const [isConnected, setIsConnected] = useState(false);
+  const [isSubscribed, setIsSubscribed] = useState(false);
 
   useEffect(() => {
     onMessageRef.current = onMessage;
@@ -18,16 +21,19 @@ export default function useMatchWebSocket(matchId, onMessage) {
     const socket = new WebSocket(WS_ENDPOINT);
 
     socketRef.current = socket;
+    setIsConnected(false);
+    setIsSubscribed(false);
 
     socket.onopen = () => {
       console.log(`🔌 WS connected for match ${matchId}`);
+      setIsConnected(true);
 
       const message = {
         type: 'subscribe',
         matchId: Number(matchId),
       };
 
-      console.log('📤 Sending WS subscription:', message);
+      console.log('📤 Auto-subscribing to match:', message);
 
       socket.send(JSON.stringify(message));
     };
@@ -37,6 +43,14 @@ export default function useMatchWebSocket(matchId, onMessage) {
         const message = JSON.parse(event.data);
 
         console.log('📨 WS update:', message);
+
+        if (message.type === 'subscribed') {
+          setIsSubscribed(true);
+        }
+
+        if (message.type === 'unsubscribed') {
+          setIsSubscribed(false);
+        }
 
         onMessageRef.current?.(message);
       } catch (error) {
@@ -54,6 +68,9 @@ export default function useMatchWebSocket(matchId, onMessage) {
         event.code,
         event.reason,
       );
+
+      setIsConnected(false);
+      setIsSubscribed(false);
     };
 
     return () => {
@@ -62,5 +79,46 @@ export default function useMatchWebSocket(matchId, onMessage) {
     };
   }, [matchId]);
 
-  return socketRef;
+  const subscribe = useCallback(() => {
+    const socket = socketRef.current;
+
+    if (!socket || socket.readyState !== WebSocket.OPEN) {
+      console.warn('⚠️ WebSocket is not connected yet.');
+      return;
+    }
+
+    const message = {
+      type: 'subscribe',
+      matchId: Number(matchId),
+    };
+
+    console.log('📤 Subscribing to match:', message);
+
+    socket.send(JSON.stringify(message));
+  }, [matchId]);
+
+  const unsubscribe = useCallback(() => {
+    const socket = socketRef.current;
+
+    if (!socket || socket.readyState !== WebSocket.OPEN) {
+      return;
+    }
+
+    const message = {
+      type: 'unsubscribe',
+      matchId: Number(matchId),
+    };
+
+    console.log('📤 Unsubscribing from match:', message);
+
+    socket.send(JSON.stringify(message));
+  }, [matchId]);
+
+  return {
+    socketRef,
+    isConnected,
+    isSubscribed,
+    subscribe,
+    unsubscribe,
+  };
 }

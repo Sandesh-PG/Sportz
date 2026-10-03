@@ -1,80 +1,259 @@
 [
   {
-    "minute": 3,
+    "minute": 1,
+    "period": "1st half",
+    "eventType": "kickoff",
+    "actor": null,
+    "team": null,
+    "metadata": {},
+    "message": "Kick-off! Manchester City v Chelsea is under way."
+  },
+  {
+    "minute": 2,
+    "period": "1st half",
     "eventType": "shot",
-    "actor": "Erling Haaland",
+    "actor": "G. Garrity",
     "team": "Manchester City",
-    "message": "Haaland gets the first shot away, but it is comfortably saved.",
-    "metadata": {
-      "scoreDelta": {
-        "home": 0,
-        "away": 0
-      }
-    }
+    "metadata": {},
+    "message": "G. Garrity (Manchester City) blazes it over the bar."
+  },
+  {
+    "minute": 3,
+    "period": "1st half",
+    "eventType": "shot",
+    "actor": "A. Thorne",
+    "team": "Manchester City",
+    "metadata": {},
+    "message": "A. Thorne (Manchester City) fires just wide of the post."
+  },
+  {
+    "minute": 5,
+    "period": "1st half",
+    "eventType": "shot",
+    "actor": "H. Corrigan",
+    "team": "Manchester City",
+    "metadata": {},
+    "message": "H. Corrigan (Manchester City) blazes it over the bar."
+  },
+  {
+    "minute": 6,
+    "period": "1st half",
+    "eventType": "shot",
+    "actor": "F. Wyndham",
+    "team": "Chelsea",
+    "metadata": {},
+    "message": "F. Wyndham (Chelsea) fires just wide of the post."
   },
   {
     "minute": 8,
-    "eventType": "corner",
-    "actor": "Kevin De Bruyne",
-    "team": "Manchester City",
-    "message": "De Bruyne swings in a dangerous corner, cleared by Chelsea.",
-    "metadata": {
-      "scoreDelta": {
-        "home": 0,
-        "away": 0
-      }
-    }
-  },
-  {
-    "minute": 14,
-    "eventType": "yellow_card",
-    "actor": "Moises Caicedo",
-    "team": "Chelsea",
-    "message": "Caicedo is booked for a late challenge.",
-    "metadata": {
-      "scoreDelta": {
-        "home": 0,
-        "away": 0
-      }
-    }
-  },
-  {
-    "minute": 22,
+    "period": "1st half",
     "eventType": "goal",
-    "actor": "Erling Haaland",
+    "actor": "H. Corrigan",
     "team": "Manchester City",
-    "message": "GOAL! Haaland finishes from close range.",
     "metadata": {
       "scoreDelta": {
         "home": 1,
         "away": 0
-      }
-    }
+      },
+      "assist": "E. Wyndham"
+    },
+    "message": "GOAL! H. Corrigan (Manchester City) tucks away the rebound. Manchester City 1-0 Chelsea.",
+    "tags": [
+      "highlight"
+    ]
+  },
+  {
+    "minute": 12,
+    "period": "1st half",
+    "eventType": "shot",
+    "actor": "B. Thorne",
+    "team": "Chelsea",
+    "metadata": {},
+    "message": "B. Thorne (Chelsea) blazes it over the bar."
+  },
+  {
+    "minute": 24,
+    "period": "1st half",
+    "eventType": "yellow_card",
+    "actor": "J. Ashworth",
+    "team": "Manchester City",
+    "metadata": {},
+    "message": "Yellow card for J. Ashworth (Manchester City) for a late challenge."
+  },
+  {
+    "minute": 28,
+    "period": "1st half",
+    "eventType": "goal",
+    "actor": "V. Corrigan",
+    "team": "Chelsea",
+    "metadata": {
+      "scoreDelta": {
+        "home": 0,
+        "away": 1
+      },
+      "assist": "B. Thorne"
+    },
+    "message": "GOAL! V. Corrigan (Chelsea) tucks away the rebound. Manchester City 1-1 Chelsea.",
+    "tags": [
+      "highlight"
+    ]
   },
   {
     "minute": 31,
-    "eventType": "shot",
-    "actor": "Cole Palmer",
-    "team": "Chelsea",
-    "message": "Palmer cuts inside and forces a strong save.",
+    "period": "1st half",
+    "eventType": "yellow_card",
+    "actor": "A. Thorne",
+    "team": "Manchester City",
+    "metadata": {},
+    "message": "Yellow card for A. Thorne (Manchester City) for dissent."
+  },
+  {
+    "minute": 33,
+    "period": "1st half",
+    "eventType": "save",
+    "actor": "L. Bramley",
+    "team": "Manchester City",
+    "metadata": {
+      "shooter": "A. Tindall"
+    },
+    "message": "L. Bramley (Manchester City) tips the shot round the post."
+  },
+  {
+    "minute": 40,
+    "period": "1st half",
+    "eventType": "save",
+    "actor": "L. Bramley",
+    "team": "Manchester City",
+    "metadata": {
+      "shooter": "B. Thorne"
+    },
+    "message": "L. Bramley (Manchester City) gets down well to smother it."
+  },
+  {
+    "minute": 41,
+    "period": "1st half",
+    "eventType": "goal",
+    "actor": "H. Corrigan",
+    "team": "Manchester City",
     "metadata": {
       "scoreDelta": {
-        "home": 0,
+        "home": 1,
         "away": 0
-      }
-    }
+      },
+      "assist": "C. Estcourt"
+    },
+    "message": "GOAL! H. Corrigan (Manchester City) tucks away the rebound. Manchester City 2-1 Chelsea.",
+    "tags": [
+      "highlight"
+    ]
   },
   {
     "minute": 45,
+    "period": "1st half",
     "eventType": "half_time",
     "actor": null,
     "team": null,
-    "message": "Half-time. Manchester City lead 1-0.",
+    "metadata": {},
+    "message": "Half time. Manchester City 2-1 Chelsea."
+  },
+  {
+    "minute": 52,
+    "period": "2nd half",
+    "eventType": "save",
+    "actor": "L. Bramley",
+    "team": "Manchester City",
     "metadata": {
-      "scoreDelta": {
-        "home": 0,
-        "away": 0
-      }
-    }
+      "shooter": "B. Thorne"
+    },
+    "message": "L. Bramley (Manchester City) palms away a powerful strike."
+  },
+  {
+    "minute": 56,
+    "period": "2nd half",
+    "eventType": "shot",
+    "actor": "A. Thorne",
+    "team": "Manchester City",
+    "metadata": {},
+    "message": "A. Thorne (Manchester City) sees the effort blocked."
+  },
+  {
+    "minute": 56,
+    "period": "2nd half",
+    "eventType": "substitution",
+    "actor": "V. Fenwick",
+    "team": "Chelsea",
+    "metadata": {
+      "playerIn": "V. Fenwick",
+      "playerOut": "M. Estcourt"
+    },
+    "message": "Substitution (Chelsea): V. Fenwick replaces M. Estcourt."
+  },
+  {
+    "minute": 60,
+    "period": "2nd half",
+    "eventType": "substitution",
+    "actor": "G. Hartley",
+    "team": "Manchester City",
+    "metadata": {
+      "playerIn": "G. Hartley",
+      "playerOut": "A. Holloway"
+    },
+    "message": "Substitution (Manchester City): G. Hartley replaces A. Holloway."
+  },
+  {
+    "minute": 61,
+    "period": "2nd half",
+    "eventType": "yellow_card",
+    "actor": "G. Garrity",
+    "team": "Manchester City",
+    "metadata": {},
+    "message": "Yellow card for G. Garrity (Manchester City) for persistent fouling."
+  },
+  {
+    "minute": 62,
+    "period": "2nd half",
+    "eventType": "substitution",
+    "actor": "T. Prescott",
+    "team": "Manchester City",
+    "metadata": {
+      "playerIn": "T. Prescott",
+      "playerOut": "C. Estcourt"
+    },
+    "message": "Substitution (Manchester City): T. Prescott replaces C. Estcourt."
+  },
+  {
+    "minute": 69,
+    "period": "2nd half",
+    "eventType": "save",
+    "actor": "L. Bramley",
+    "team": "Manchester City",
+    "metadata": {
+      "shooter": "W. Bramley"
+    },
+    "message": "L. Bramley (Manchester City) gets down well to smother it."
+  },
+  {
+    "minute": 69,
+    "period": "2nd half",
+    "eventType": "substitution",
+    "actor": "C. Holloway",
+    "team": "Chelsea",
+    "metadata": {
+      "playerIn": "C. Holloway",
+      "playerOut": "A. Tindall"
+    },
+    "message": "Substitution (Chelsea): C. Holloway replaces A. Tindall."
+  },
+  {
+    "minute": 90,
+    "period": "2nd half",
+    "eventType": "full_time",
+    "actor": null,
+    "team": null,
+    "metadata": {},
+    "message": "Full time. Manchester City 2-1 Chelsea.",
+    "tags": [
+      "highlight"
+    ]
   }
 ]

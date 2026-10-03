@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import MatchCard from '../components/MatchCard.jsx';
 import Navbar from '../components/Navbar.jsx';
 import { getMatches } from '../services/api.js';
+import useMatchesWebSocket from '../hooks/useMatchesWebSocket.js';
 import './Matches.css';
 
 const supportedSports = new Set(['football', 'cricket']);
@@ -71,6 +72,44 @@ export default function Matches() {
       isCurrent = false;
     };
   }, [retryKey]);
+
+  useMatchesWebSocket((message) => {
+  if (message?.type === 'score_update') {
+    const updated = message.data;
+
+    if (!updated) return;
+
+    setMatches((current) =>
+      current.map((match) =>
+        match.id === updated.matchId
+          ? {
+              ...match,
+              homeScore: updated.homeScore,
+              awayScore: updated.awayScore,
+              score: updated.score,
+              status: updated.status,
+            }
+          : match,
+      ),
+    );
+
+    return;
+  }
+
+  if (message?.type === 'match_updated') {
+    const updated = message.data;
+
+    if (!updated) return;
+
+    setMatches((current) =>
+      current.map((match) =>
+        match.id === updated.id
+          ? updated
+          : match,
+      ),
+    );
+  }
+});
 
   const filteredMatches = useMemo(() => {
     const query = searchQuery.trim().toLowerCase();
