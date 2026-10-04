@@ -456,19 +456,6 @@ scheduled windows.
 -   [ ] Production deployment configuration
 -   [ ] Additional sports and event types
 
-## 🔐 Security & Production Notes
-
-Before deploying publicly:
-
--   Keep secrets in environment variables.
--   Never commit database credentials or API keys.
--   Configure production CORS appropriately.
--   Configure WebSocket authentication/authorization if required.
--   Use `wss://` behind HTTPS in production.
--   Review Arcjet configuration for the production environment.
--   Add rate limiting and abuse protection where appropriate.
--   Add structured logging and monitoring.
-
 ## 📌 Design Principles
 
 Sportz follows a few core principles:
@@ -483,40 +470,3 @@ Sportz follows a few core principles:
     simulation and publishing architecture.
 5.  **Separation of concerns** --- routes, scoring, simulation, event
     publishing, WebSockets, and UI rendering remain separate.
-
-## 🤝 Contributing
-
-1.  Fork the repository.
-2.  Create a feature branch:
-
-``` bash
-git checkout -b feature/your-feature
-```
-
-3.  Make your changes.
-4.  Test both frontend and backend.
-5.  Commit your changes:
-
-``` bash
-git commit -m "feat: add your feature"
-```
-
-6.  Push the branch:
-
-``` bash
-git push origin feature/your-feature
-```
-
-7.  Open a pull request.
-
-## 📄 License
-
-This project currently does not specify a license.
-
-If this repository will be publicly distributed, add an appropriate
-license before publishing.
-
-------------------------------------------------------------------------
-
-Built with React, Node.js, WebSockets, PostgreSQL, and a lot of
-live-match events. 🏏⚽
