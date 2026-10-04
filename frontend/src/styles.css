@@ -42,246 +42,27 @@ h1 { font-size: clamp(52px, 8vw, 96px); line-height: .95; }
 h2 { font-size: 31px; text-transform: uppercase; }
 .match-count { color: #69717d; font-size: 12px; }
 .match-grid { display: grid; gap: 14px; grid-template-columns: repeat(4, minmax(0, 1fr)); }
-.match-card {
-  background:
-    radial-gradient(circle at 50% 0%, rgba(255,255,255,.035), transparent 45%),
-    #14171c;
-  border: 1px solid #272c34;
-  border-radius: 14px;
-  min-width: 0;
-  overflow: hidden;
-  position: relative;
-  transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease;
-}
-
-.match-card:hover {
-  border-color: #454c57;
-  transform: translateY(-4px);
-  box-shadow: 0 14px 35px rgba(0,0,0,.22);
-}
-
-.match-card.sport-football {
-  border-top: 2px solid #3b82f6;
-}
-
-.match-card.sport-cricket {
-  border-top: 2px solid #e7a62f;
-}
-
-.match-card-topline,
-.match-card-footer {
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-}
-
-.match-card-topline {
-  border-bottom: 1px solid #252a32;
-  padding: 15px 18px 13px;
-}
-
-.sport-label {
-  align-items: center;
-  color: #aeb5c0;
-  display: flex;
-  font-size: 10px;
-  font-weight: 700;
-  gap: 8px;
-  letter-spacing: .09em;
-  text-transform: uppercase;
-}
-
-.sport-icon {
-  font-size: 15px;
-}
-
-.match-card-body {
-  min-height: 205px;
-  padding: 18px 18px 16px;
-}
-
-.match-card-status {
-  align-items: center;
-  color: #697481;
-  display: flex;
-  font-size: 9px;
-  font-weight: 700;
-  justify-content: space-between;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-}
-
-.status-live .match-card-status {
-  color: #f25a61;
-}
-
-.status-upcoming .match-card-status {
-  color: #87919f;
-}
-
-.status-finished .match-card-status {
-  color: #68717d;
-}
-
-.match-card-live-time {
-  color: #f25a61;
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 11px;
-  letter-spacing: .04em;
-}
-
-.poster-scoreline {
-  align-items: center;
-  display: grid;
-  gap: 10px;
-  grid-template-columns: 1fr 105px 1fr;
-  margin-top: 22px;
-}
-
-.poster-team {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  min-width: 0;
-  text-align: center;
-}
-
-.poster-team-away {
-  flex-direction: column;
-}
-
-.poster-crest {
-  align-items: center;
-  background: #1b2b45;
-  border: 1px solid #3c6090;
-  border-radius: 50%;
-  color: #b8d5ff;
-  display: flex;
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 15px;
-  font-weight: 700;
-  height: 48px;
-  justify-content: center;
-  width: 48px;
-}
-
-.sport-cricket .poster-crest {
-  background: #3b2d13;
-  border-color: #9d7423;
-  color: #f3cc73;
-}
-
-.poster-team-name {
-  color: #eef0f3;
-  font-size: 12px;
-  font-weight: 700;
-  max-width: 115px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.poster-score {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-width: 0;
-}
-
-.poster-score strong {
-  align-items: center;
-  color: #fff;
-  display: flex;
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 34px;
-  font-weight: 700;
-  gap: 7px;
-  letter-spacing: -.07em;
-  line-height: 1;
-}
-
-.poster-score strong span {
-  color: #505966;
-  font-size: 24px;
-  font-weight: 500;
-}
-
-.poster-score small {
-  color: #77818e;
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: .08em;
-  margin-top: 9px;
-  text-transform: uppercase;
-}
-
-.cricket-wickets {
-  color: #fff !important;
-  font-size: .7em !important;
-}
-
-.poster-vs {
-  color: #5d6672;
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 9px;
-  letter-spacing: .12em;
-  margin: 4px 0;
-  text-transform: uppercase;
-}
-
-.poster-live-line {
-  align-items: center;
-  color: #7c8692;
-  display: flex;
-  font-size: 9px;
-  gap: 7px;
-  justify-content: center;
-  letter-spacing: .06em;
-  margin-top: 18px;
-  text-transform: uppercase;
-}
-
-.poster-live-dot {
-  animation: pulse 1.8s infinite;
-  background: #ec3e48;
-  border-radius: 50%;
-  box-shadow: 0 0 0 4px rgba(236, 62, 72, .10);
-  height: 5px;
-  width: 5px;
-}
-
-.match-card-footer {
-  border-top: 1px solid #252a32;
-  gap: 12px;
-  padding: 12px 18px 14px;
-}
-
-.match-time {
-  color: #737c88;
-  font-size: 10px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.view-match {
-  background: none;
-  border: 0;
-  color: #e9ebef;
-  cursor: pointer;
-  font-size: 10px;
-  font-weight: 700;
-  padding: 0;
-  white-space: nowrap;
-}
-
-.view-match span {
-  color: #e43d45;
-  font-size: 14px;
-  margin-left: 3px;
-}
+.match-card { background: #14171c; border: 1px solid #272c34; border-radius: 13px; min-width: 0; overflow: hidden; transition: border-color .2s ease, transform .2s ease; }
+.match-card:hover { border-color: #454c57; transform: translateY(-3px); }
+.match-card.sport-football { border-top: 2px solid #3b82f6; }
+.match-card.sport-cricket { border-top: 2px solid #e7a62f; }
+.match-card-topline, .match-card-footer { align-items: center; display: flex; justify-content: space-between; }
+.match-card-topline { border-bottom: 1px solid #252a32; padding: 17px 18px 14px; }
+.sport-label { align-items: center; color: #aeb5c0; display: flex; font-size: 11px; font-weight: 700; gap: 8px; letter-spacing: .07em; text-transform: uppercase; }
+.sport-icon { font-size: 16px; }
+.live-indicator, .match-status { align-items: center; display: inline-flex; font-size: 10px; font-weight: 700; letter-spacing: .1em; }
+.live-indicator { color: #f25a61; }
+.live-dot { animation: pulse 1.8s infinite; background: #ec3e48; border-radius: 50%; box-shadow: 0 0 0 4px rgba(236, 62, 72, .12); height: 6px; margin-right: 7px; width: 6px; }
+.status-upcoming { color: #a4acb8; }
+.status-finished { color: #59616d; }
+.match-card-body { min-height: 132px; padding: 20px 18px 14px; }
+.team-row { align-items: center; display: flex; gap: 12px; justify-content: space-between; padding: 7px 0; }
+.team-name { color: #e9ebef; font-size: 14px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.team-score { color: #fff; font-family: 'Space Grotesk', sans-serif; font-size: 19px; min-width: 52px; text-align: right; }
+.match-card-footer { border-top: 1px solid #252a32; padding: 13px 18px 15px; }
+.match-time { color: #737c88; font-size: 11px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.view-match { background: none; border: 0; color: #e9ebef; cursor: pointer; font-size: 11px; font-weight: 700; padding: 0; white-space: nowrap; }
+.view-match span { color: #e43d45; font-size: 15px; margin-left: 3px; }
 .upcoming-heading { margin-top: 70px; }
 .empty-state { border: 1px dashed #303640; border-radius: 12px; color: #77808d; grid-column: 1 / -1; margin: 0; padding: 35px; text-align: center; }
 .page-state { align-items: center; color: #9da5b0; display: flex; gap: 16px; justify-content: center; min-height: 150px; padding: 32px; text-align: center; }
@@ -319,13 +100,8 @@ h2 { font-size: 31px; text-transform: uppercase; }
 .detail-preview-switcher button.selected { background: #252a32; border-color: #3a424d; color: #fff; }
 .detail-page { margin: 0 auto; max-width: 1040px; padding: 34px 32px 80px; }
 .detail-topbar { align-items: center; display: flex; justify-content: space-between; }
-.detail-actions { align-items: center; display: flex; gap: 14px; }
 .back-link { background: none; border: 0; color: #89919d; cursor: pointer; font-size: 12px; padding: 0; }
 .back-link:hover { color: #fff; }
-.subscribe-button { background: #20242b; border: 1px solid #3a424d; border-radius: 999px; color: #e9ebef; cursor: pointer; font-size: 11px; font-weight: 700; padding: 8px 14px; transition: background .2s ease, border-color .2s ease, color .2s ease; }
-.subscribe-button:hover:not(:disabled) { background: #292f38; border-color: #59636f; }
-.subscribe-button.subscribed { background: #3b2c10; border-color: #bd8925; color: #ffd478; }
-.subscribe-button:disabled { cursor: not-allowed; opacity: .55; }
 .detail-sport-badge { align-items: center; display: flex; font-size: 11px; font-weight: 700; gap: 8px; letter-spacing: .09em; text-transform: uppercase; }
 .detail-sport-badge > span { font-size: 18px; }
 .detail-sport-badge .live-indicator { margin-left: 15px; }
@@ -467,8 +243,6 @@ h2 { font-size: 31px; text-transform: uppercase; }
 .cricket-event-copy span { color: #89929d; font-size: 12px; line-height: 1.35; }
 @media (max-width: 700px) {
   .detail-page { padding: 25px 20px 55px; }
-  .detail-topbar { align-items: flex-start; gap: 14px; }
-  .detail-actions { align-items: flex-end; flex-direction: column; gap: 8px; }
   .detail-heading { margin: 48px 0 24px; }
   .detail-heading h1 { font-size: 43px; }
   .football-scoreline { gap: 14px; grid-template-columns: 1fr 105px 1fr; padding: 23px 16px; }
@@ -486,5 +260,289 @@ h2 { font-size: 31px; text-transform: uppercase; }
   .cricket-events,
   .event-timeline {
     max-height: 450px;
+  }
+}
+/* Football live clock + player/event details */
+.score-team-copy { min-width: 0; }
+.football-scorers { display: flex; flex-direction: column; gap: 4px; margin-top: 7px; }
+.football-scorer { color: #8fa3bd; font-size: 10px; line-height: 1.25; }
+.football-scorer span { color: #6fa9ff; margin-right: 5px; }
+.match-minute { min-width: 82px; }
+.match-minute.is-live { color: #f25a61; }
+
+.event-yellow-card .event-marker { background: rgba(245, 205, 65, .12); border-color: #d8b82f; }
+.event-red-card .event-marker { background: rgba(235, 67, 67, .14); border-color: #e34d52; }
+.event-substitution .event-marker { background: rgba(61, 190, 123, .12); border-color: #3dbb7b; color: #64d59a; }
+.event-half-time .event-marker,
+.event-full-time .event-marker { background: rgba(255,255,255,.06); border-color: #59636f; }
+.event-player { color: #dce4ed !important; font-weight: 700; margin-top: 7px !important; }
+.substitution-copy { display: flex; flex-direction: column; gap: 3px; margin-top: 7px !important; }
+.player-in { color: #59c88d; }
+.player-out { color: #e77b83; }
+.empty-events { color: #697585; font-size: 13px; padding: 24px 0 10px; text-align: center; }
+
+@media (max-width: 680px) {
+  .football-scoreline { grid-template-columns: 1fr 120px 1fr; }
+  .football-scorer { font-size: 9px; }
+  .score-team { gap: 9px; }
+  .score-team strong { font-size: 12px; }
+}
+
+/* Football detail readability — larger desktop typography */
+@media (min-width: 701px) {
+  .football-scoreline {
+    min-height: 210px;
+    padding: 34px 40px;
+  }
+
+  .score-team-copy {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .score-team strong {
+    font-size: 21px;
+  }
+
+  .football-scorers {
+    gap: 6px;
+    margin-top: 10px;
+  }
+
+  .football-scorer {
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  .football-score-values {
+    font-size: 68px;
+  }
+
+  .football-score-values b {
+    font-size: 38px;
+    margin: 0 12px;
+  }
+
+  .match-minute {
+    font-size: 13px;
+    margin-top: 14px;
+  }
+
+  .commentary-panel {
+    padding: 30px 32px 26px;
+  }
+
+  .detail-section-heading {
+    margin-bottom: 30px;
+  }
+
+  .detail-section-heading h2 {
+    font-size: 28px;
+  }
+
+  .detail-section-heading .section-kicker {
+    font-size: 12px;
+  }
+
+  .event-count {
+    font-size: 13px;
+  }
+
+  .event-timeline {
+    max-height: 560px;
+  }
+
+  .event-timeline::before {
+    left: 88px;
+  }
+
+  .timeline-event {
+    gap: 20px;
+    grid-template-columns: 54px 50px 1fr;
+    min-height: 104px;
+  }
+
+  .event-time {
+    font-size: 16px;
+    padding-top: 14px;
+  }
+
+  .event-marker {
+    font-size: 19px;
+    height: 40px;
+    width: 40px;
+  }
+
+  .event-copy {
+    padding: 10px 0 22px;
+  }
+
+  .event-title {
+    gap: 11px;
+  }
+
+  .event-title strong {
+    font-size: 13px;
+  }
+
+  .event-title span {
+    font-size: 13px;
+  }
+
+  .event-copy p {
+    font-size: 15px;
+    line-height: 1.55;
+    margin-top: 9px;
+  }
+
+  .event-player {
+    font-size: 16px !important;
+    margin-top: 9px !important;
+  }
+
+  .substitution-copy {
+    font-size: 15px;
+    gap: 4px;
+    margin-top: 9px !important;
+  }
+}
+
+@media (max-width: 700px) {
+  .football-scorer {
+    font-size: 11px;
+  }
+
+  .event-time {
+    font-size: 14px;
+  }
+
+  .event-title strong,
+  .event-title span {
+    font-size: 11px;
+  }
+
+  .event-copy p {
+    font-size: 13px;
+  }
+}
+
+
+/* Cricket detail readability */
+@media (min-width: 701px) {
+  .cricket-main-score {
+    padding: 34px 32px 24px;
+  }
+
+  .cricket-team-label {
+    font-size: 15px;
+  }
+
+  .cricket-main-score strong {
+    font-size: 72px;
+  }
+
+  .overs-label {
+    font-size: 14px;
+  }
+
+  .cricket-supporting-score {
+    padding: 20px 32px;
+  }
+
+  .cricket-supporting-score span,
+  .cricket-supporting-score strong {
+    font-size: 15px;
+  }
+
+  .cricket-stats-grid div {
+    padding: 18px 24px;
+  }
+
+  .cricket-stats-grid span {
+    font-size: 12px;
+  }
+
+  .cricket-stats-grid strong {
+    font-size: 21px;
+  }
+
+  .batting-panel {
+    padding: 32px 34px;
+  }
+
+  .batting-panel .detail-section-heading h2,
+  .cricket-commentary .detail-section-heading h2 {
+    font-size: 29px;
+  }
+
+  .player-row {
+    padding: 19px 0;
+  }
+
+  .player-row strong {
+    font-size: 16px;
+  }
+
+  .player-row span {
+    font-size: 21px;
+  }
+
+  .player-row small {
+    font-size: 13px;
+  }
+
+  .bowler-block {
+    margin-top: 32px;
+  }
+
+  .bowler-block p,
+  .last-over p {
+    font-size: 12px;
+  }
+
+  .over-balls {
+    gap: 10px;
+    margin-top: 16px;
+  }
+
+  .over-balls span {
+    font-size: 14px;
+    height: 34px;
+    width: 34px;
+  }
+
+  .cricket-events {
+    max-height: 560px;
+  }
+
+  .cricket-event {
+    gap: 16px;
+    grid-template-columns: 48px 86px 1fr;
+    min-height: 82px;
+    padding: 14px 0;
+  }
+
+  .ball-number {
+    font-size: 14px;
+  }
+
+  .ball-result {
+    font-size: 11px;
+    height: 31px;
+    width: 78px;
+  }
+
+  .cricket-event-copy {
+    gap: 6px;
+  }
+
+  .cricket-event-copy strong {
+    font-size: 15px;
+  }
+
+  .cricket-event-copy span {
+    font-size: 14px;
+    line-height: 1.5;
   }
 }

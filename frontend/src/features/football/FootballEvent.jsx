@@ -1,20 +1,58 @@
-const eventDetails = {
-  goal: { icon: '⚽', label: 'GOAL', className: 'event-goal' },
-  card: { icon: '🟨', label: 'YELLOW CARD', className: 'event-card' },
-  save: { icon: '🧤', label: 'SAVE', className: 'event-save' },
-  substitution: { icon: '🔄', label: 'SUBSTITUTION', className: 'event-substitution' },
+const EVENT_CONFIG = {
+  goal: { label: 'GOAL', icon: '⚽', className: 'event-goal' },
+  yellow_card: { label: 'YELLOW CARD', icon: '🟨', className: 'event-yellow-card' },
+  red_card: { label: 'RED CARD', icon: '🟥', className: 'event-red-card' },
+  card: { label: 'CARD', icon: '🟨', className: 'event-yellow-card' },
+  substitution: { label: 'SUBSTITUTION', icon: '↕', className: 'event-substitution' },
+  half_time: { label: 'HALF-TIME', icon: '⏸', className: 'event-half-time' },
+  full_time: { label: 'FULL-TIME', icon: '✓', className: 'event-full-time' },
+  save: { label: 'SAVE', icon: '🧤', className: 'event-save' },
+  shot: { label: 'SHOT', icon: '◉', className: 'event-shot' },
+  corner: { label: 'CORNER', icon: '↗', className: 'event-corner' },
 };
 
+function getConfig(event) {
+  if (EVENT_CONFIG[event.eventType]) return EVENT_CONFIG[event.eventType];
+
+  if (event.eventType === 'card') {
+    const cardType = String(event.metadata?.cardType ?? '').toLowerCase();
+    if (cardType.includes('red')) return EVENT_CONFIG.red_card;
+  }
+
+  return { label: String(event.eventType ?? 'UPDATE').replaceAll('_', ' ').toUpperCase(), icon: '•', className: 'event-default' };
+}
+
+function formatMinute(event) {
+  if (event.minute == null) return '';
+  const minute = String(event.minute);
+  return minute.endsWith("'") ? minute : `${minute}'`;
+}
+
 export default function FootballEvent({ event }) {
-  const details = eventDetails[event.eventType] ?? eventDetails.save;
+  const config = getConfig(event);
+  const isSubstitution = event.eventType === 'substitution';
+  const playerOut = event.metadata?.playerOut ?? event.playerOut;
 
   return (
-    <article className={`timeline-event ${details.className}`}>
-      <div className="event-time">{event.minute}'</div>
-      <div className="event-marker">{details.icon}</div>
+    <article className={`timeline-event ${config.className}`}>
+      <time className="event-time">{formatMinute(event)}</time>
+      <div className="event-marker" aria-hidden="true">{config.icon}</div>
       <div className="event-copy">
-        <div className="event-title"><strong>{details.label}</strong><span>{event.team}</span></div>
-        <p>{event.message}</p>
+        <div className="event-title">
+          <strong>{config.label}</strong>
+          {event.team ? <span>{event.team}</span> : null}
+        </div>
+
+        {isSubstitution && playerOut ? (
+          <p className="substitution-copy">
+            <span className="player-in">↑ {event.actor || 'Player in'}</span>
+            <span className="player-out">↓ {playerOut}</span>
+          </p>
+        ) : event.actor ? (
+          <p className="event-player">{event.actor}</p>
+        ) : null}
+
+        {event.message ? <p>{event.message}</p> : null}
       </div>
     </article>
   );
