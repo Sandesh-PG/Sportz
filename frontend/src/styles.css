@@ -55,7 +55,6 @@ h2 { font-size: 31px; text-transform: uppercase; }
 .live-dot { animation: pulse 1.8s infinite; background: #ec3e48; border-radius: 50%; box-shadow: 0 0 0 4px rgba(236, 62, 72, .12); height: 6px; margin-right: 7px; width: 6px; }
 .status-upcoming { color: #a4acb8; }
 .status-finished { color: #59616d; }
-.match-card-body { min-height: 132px; padding: 20px 18px 14px; }
 .team-row { align-items: center; display: flex; gap: 12px; justify-content: space-between; padding: 7px 0; }
 .team-name { color: #e9ebef; font-size: 14px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .team-score { color: #fff; font-family: 'Space Grotesk', sans-serif; font-size: 19px; min-width: 52px; text-align: right; }
@@ -105,6 +104,53 @@ h2 { font-size: 31px; text-transform: uppercase; }
 .detail-sport-badge { align-items: center; display: flex; font-size: 11px; font-weight: 700; gap: 8px; letter-spacing: .09em; text-transform: uppercase; }
 .detail-sport-badge > span { font-size: 18px; }
 .detail-sport-badge .live-indicator { margin-left: 15px; }
+
+/* Live updates / subscribe control */
+.detail-sport-badge button {
+  align-items: center;
+  background: #171b21;
+  border: 1px solid #343b46;
+  border-radius: 999px;
+  color: #dfe3e8;
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 11px;
+  font-weight: 700;
+  gap: 7px;
+  margin-left: 12px;
+  padding: 8px 13px;
+  transition: background .2s ease, border-color .2s ease, color .2s ease, transform .2s ease;
+}
+
+.detail-sport-badge button:hover {
+  background: #20252d;
+  border-color: #4a5360;
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.detail-sport-badge button:active {
+  transform: translateY(0);
+}
+
+/* Football crests use the real logo shape; no stretched circle/oval */
+.football-detail .team-crest.football-crest {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  flex: 0 0 56px;
+  height: 56px;
+  padding: 0;
+  width: 56px;
+}
+
+.football-detail .team-crest.football-crest img {
+  display: block;
+  height: 100%;
+  object-fit: contain;
+  width: 100%;
+}
+
 .football-badge { color: #72a9f7; }
 .cricket-badge { color: #e7b24f; }
 .detail-heading { margin: 64px 0 31px; }
@@ -126,7 +172,8 @@ h2 { font-size: 31px; text-transform: uppercase; }
 .football-score-center { text-align: center; }
 .football-score-values { align-items: center; color: #fff; display: flex; font-family: 'Space Grotesk', sans-serif; font-size: 58px; font-weight: 700; justify-content: center; letter-spacing: -.07em; line-height: 1; }
 .football-score-values b { color: #525b68; font-size: 33px; font-weight: 500; margin: 0 10px; }
-.match-minute { color: #f25a61; display: block; font-size: 11px; font-weight: 700; letter-spacing: .09em; margin-top: 12px; }
+.match-minute { color: #f25a61; display: block; font-size: 11px; font-weight: 700; letter-spacing: .09em; margin-top: 12px; min-width: 82px; }
+.match-minute.is-live { color: #f25a61; }
 .commentary-panel { margin-top: 22px; padding: 27px 28px 22px; }
 .detail-section-heading { align-items: end; display: flex; justify-content: space-between; margin-bottom: 25px; }
 .detail-section-heading h2 { font-size: 24px; }
@@ -250,6 +297,7 @@ h2 { font-size: 31px; text-transform: uppercase; }
   .score-team-away { flex-direction: column; text-align: center; }
   .score-team strong { font-size: 13px; }
   .team-crest { flex-basis: 38px; font-size: 16px; height: 38px; width: 38px; }
+  .football-detail .team-crest.football-crest { flex-basis: 44px; height: 44px; width: 44px; }
   .football-score-values { font-size: 42px; }
   .football-score-values b { font-size: 24px; margin: 0 5px; }
   .commentary-panel, .batting-panel { padding: 22px 18px 17px; }
@@ -267,8 +315,6 @@ h2 { font-size: 31px; text-transform: uppercase; }
 .football-scorers { display: flex; flex-direction: column; gap: 4px; margin-top: 7px; }
 .football-scorer { color: #8fa3bd; font-size: 10px; line-height: 1.25; }
 .football-scorer span { color: #6fa9ff; margin-right: 5px; }
-.match-minute { min-width: 82px; }
-.match-minute.is-live { color: #f25a61; }
 
 .event-yellow-card .event-marker { background: rgba(245, 205, 65, .12); border-color: #d8b82f; }
 .event-red-card .event-marker { background: rgba(235, 67, 67, .14); border-color: #e34d52; }
@@ -280,6 +326,233 @@ h2 { font-size: 31px; text-transform: uppercase; }
 .player-in { color: #59c88d; }
 .player-out { color: #e77b83; }
 .empty-events { color: #697585; font-size: 13px; padding: 24px 0 10px; text-align: center; }
+
+/* =========================================================
+   MATCH CARD — POSTER SCOREBOARD
+   ========================================================= */
+
+.match-card-body {
+  min-height: 205px;
+  padding: 18px 18px 16px;
+}
+
+/* Match status row */
+.match-card-status {
+  align-items: center;
+  color: #697481;
+  display: flex;
+  font-size: 9px;
+  font-weight: 700;
+  justify-content: space-between;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.status-live .match-card-status {
+  color: #f25a61;
+}
+
+.status-upcoming .match-card-status {
+  color: #87919f;
+}
+
+.status-finished .match-card-status {
+  color: #68717d;
+}
+
+.match-card-live-time {
+  color: #f25a61;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px;
+  letter-spacing: .04em;
+}
+
+/* Main poster scoreline */
+.poster-scoreline {
+  align-items: center;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: minmax(0, 1fr) 105px minmax(0, 1fr);
+  margin-top: 22px;
+}
+
+.poster-team {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+  text-align: center;
+}
+
+.poster-team-away {
+  flex-direction: column;
+}
+
+.poster-crest {
+  align-items: center;
+  background: #1b2b45;
+  border: 1px solid #3c6090;
+  border-radius: 50%;
+  color: #b8d5ff;
+  display: flex;
+  flex: 0 0 48px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  height: 48px;
+  justify-content: center;
+  width: 48px;
+}
+
+.sport-cricket .poster-crest {
+  background: #3b2d13;
+  border-color: #9d7423;
+  color: #f3cc73;
+}
+
+.poster-team-name {
+  color: #eef0f3;
+  font-size: 12px;
+  font-weight: 700;
+  max-width: 115px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Score in the center */
+.poster-score {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+}
+
+.poster-score strong {
+  align-items: center;
+  color: #fff;
+  display: flex;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 34px;
+  font-weight: 700;
+  gap: 7px;
+  letter-spacing: -.07em;
+  line-height: 1;
+}
+
+.poster-score strong span {
+  color: #505966;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.poster-score small {
+  color: #77818e;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  margin-top: 9px;
+  text-transform: uppercase;
+}
+
+/* Cricket */
+.cricket-wickets {
+  color: #fff !important;
+  font-size: .7em !important;
+}
+
+.poster-vs {
+  color: #5d6672;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 9px;
+  letter-spacing: .12em;
+  margin: 4px 0;
+  text-transform: uppercase;
+}
+
+/* Live text underneath */
+.poster-live-line {
+  align-items: center;
+  color: #7c8692;
+  display: flex;
+  font-size: 9px;
+  gap: 7px;
+  justify-content: center;
+  letter-spacing: .06em;
+  margin-top: 18px;
+  text-transform: uppercase;
+}
+
+.poster-live-dot {
+  animation: pulse 1.8s infinite;
+  background: #ec3e48;
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px rgba(236, 62, 72, .10);
+  height: 5px;
+  width: 5px;
+}
+
+/* =========================================================
+   MATCH CARD RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 700px) {
+  .poster-scoreline {
+    gap: 7px;
+    grid-template-columns: minmax(0, 1fr) 82px minmax(0, 1fr);
+  }
+
+  .poster-crest {
+    flex-basis: 42px;
+    height: 42px;
+    width: 42px;
+  }
+
+  .poster-team-name {
+    font-size: 11px;
+    max-width: 90px;
+  }
+
+  .poster-score strong {
+    font-size: 28px;
+  }
+
+  .poster-score strong span {
+    font-size: 20px;
+  }
+
+  .poster-score small {
+    font-size: 8px;
+  }
+}
+
+/* =========================================================
+   TEAM LOGOS
+   ========================================================= */
+
+/* Football logos should NOT be forced into a circle */
+.sport-football .poster-crest {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  height: 54px;
+  width: 54px;
+}
+
+.sport-football .poster-crest img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* Keep football logo area consistent */
+.sport-football .poster-team {
+  gap: 9px;
+}
 
 @media (max-width: 680px) {
   .football-scoreline { grid-template-columns: 1fr 120px 1fr; }
