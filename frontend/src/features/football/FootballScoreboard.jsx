@@ -1,3 +1,4 @@
+import './FootballScoreboard.css';
 import { useEffect, useMemo, useState } from 'react';
 
 import MatchStatus from '../../components/MatchStatus.jsx';

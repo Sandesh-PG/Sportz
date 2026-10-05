@@ -1,0 +1,18 @@
+.live-indicator {
+  align-items: center;
+  color: #f25a61;
+  display: inline-flex;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.live-dot {
+  animation: pulse 1.8s infinite;
+  background: #ec3e48;
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px rgba(236, 62, 72, 0.12);
+  height: 6px;
+  margin-right: 7px;
+  width: 6px;
+}

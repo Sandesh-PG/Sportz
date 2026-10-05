@@ -1,3 +1,4 @@
+import './Home.css';
 import { useMemo, useState } from 'react';
 import MatchPoster from '../components/MatchPoster.jsx';
 import Navbar from '../components/Navbar.jsx';

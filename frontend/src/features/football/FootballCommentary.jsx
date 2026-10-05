@@ -1,3 +1,4 @@
+import './FootballCommentary.css';
 import FootballEvent from './FootballEvent.jsx';
 
 export default function FootballCommentary({ events = [] }) {

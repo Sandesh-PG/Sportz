@@ -1,0 +1,30 @@
+/* Cricket commentary */
+.cricket-commentary {
+  margin-top: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.cricket-events {
+  border-top: 1px solid #292f38;
+  max-height: 520px;
+  overflow-y: auto;
+  padding-right: 8px;
+  scrollbar-width: thin;
+  scrollbar-color: #3a424d transparent;
+}
+
+.cricket-events::-webkit-scrollbar { width: 6px; }
+.cricket-events::-webkit-scrollbar-track { background: transparent; }
+.cricket-events::-webkit-scrollbar-thumb { background: #3a424d; border-radius: 999px; }
+.cricket-events::-webkit-scrollbar-thumb:hover { background: #59636f; }
+
+@media (min-width: 701px) {
+  .cricket-events { max-height: 560px; }
+}
+
+@media (max-width: 700px) {
+  .cricket-commentary { margin-top: 0; }
+  .cricket-events { max-height: 450px; }
+}

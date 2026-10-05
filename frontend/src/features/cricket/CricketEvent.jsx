@@ -1,3 +1,4 @@
+import './CricketEvent.css';
 const eventDetails = {
   six: { label: 'SIX', className: 'ball-six' },
   four: { label: 'FOUR', className: 'ball-four' },

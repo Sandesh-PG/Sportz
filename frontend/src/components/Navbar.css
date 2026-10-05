@@ -1,0 +1,73 @@
+/* Navbar */
+.navbar {
+  align-items: center;
+  border-bottom: 1px solid #20242b;
+  display: flex;
+  gap: 42px;
+  margin: 0 auto;
+  max-width: 1240px;
+  padding: 22px 32px;
+}
+
+.brand {
+  align-items: center;
+  display: flex;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -.04em;
+  margin-right: 14px;
+}
+
+.brand-mark {
+  align-items: center;
+  background: #e43d45;
+  border-radius: 9px;
+  display: inline-flex;
+  font-size: 16px;
+  height: 30px;
+  justify-content: center;
+  margin-right: 9px;
+  transform: rotate(-8deg);
+  width: 30px;
+}
+
+.primary-nav { display: flex; gap: 28px; }
+
+.nav-link {
+  color: #7d8490;
+  font-size: 14px;
+  font-weight: 600;
+  transition: color .2s ease;
+}
+
+.nav-link:hover,
+.nav-link.active { color: #fff; }
+
+.sport-filters {
+  display: flex;
+  gap: 5px;
+  margin-left: auto;
+}
+
+.filter-button {
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  color: #858c98;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 8px 14px;
+  transition: all .2s ease;
+}
+
+.filter-button:hover { color: #fff; }
+.filter-button.selected { background: #20242b; border-color: #303640; color: #fff; }
+
+@media (max-width: 680px) {
+  .navbar { flex-wrap: wrap; gap: 20px; padding: 18px 20px; }
+  .brand { margin-right: auto; }
+  .primary-nav { order: 3; width: 100%; }
+  .sport-filters { margin-left: 0; }
+}

@@ -1,0 +1,170 @@
+/* Football scoreboard */
+.football-scoreline {
+  align-items: center;
+  display: grid;
+  gap: 25px;
+  grid-template-columns: 1fr 180px 1fr;
+  min-height: 190px;
+  padding: 28px 34px;
+}
+
+.score-team {
+  align-items: center;
+  display: flex;
+  gap: 15px;
+}
+
+.score-team-away {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+.score-team-copy {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.score-team strong {
+  color: #fff;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(18px, 2.4vw, 25px);
+}
+
+.team-crest {
+  align-items: center;
+  border-radius: 11px;
+  display: inline-flex;
+  flex: 0 0 48px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  height: 48px;
+  justify-content: center;
+}
+
+.football-crest {
+  background: #1b2b45;
+  border: 1px solid #527fbf;
+  color: #b8d5ff;
+}
+
+.football-score-center { text-align: center; }
+
+.football-score-values {
+  align-items: center;
+  color: #fff;
+  display: flex;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 58px;
+  font-weight: 700;
+  justify-content: center;
+  letter-spacing: -.07em;
+  line-height: 1;
+}
+
+.football-score-values b {
+  color: #525b68;
+  font-size: 33px;
+  font-weight: 500;
+  margin: 0 10px;
+}
+
+.match-minute {
+  color: #f25a61;
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .09em;
+  margin-top: 12px;
+  min-width: 82px;
+}
+
+.match-minute.is-live { color: #f25a61; }
+
+.football-scorers {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 7px;
+}
+
+.football-scorer {
+  color: #8fa3bd;
+  font-size: 10px;
+  line-height: 1.25;
+}
+
+.football-scorer span { color: #6fa9ff; margin-right: 5px; }
+
+.football-detail .team-crest.football-crest {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  flex: 0 0 56px;
+  height: 56px;
+  padding: 0;
+  width: 56px;
+}
+
+.football-detail .team-crest.football-crest img {
+  display: block;
+  height: 100%;
+  object-fit: contain;
+  width: 100%;
+}
+
+.football-badge { color: #72a9f7; }
+
+@media (min-width: 701px) {
+  .football-scoreline {
+    min-height: 210px;
+    padding: 34px 40px;
+  }
+
+  .score-team strong { font-size: 21px; }
+
+  .football-scorers {
+    gap: 6px;
+    margin-top: 10px;
+  }
+
+  .football-scorer {
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  .football-score-values { font-size: 68px; }
+  .football-score-values b { font-size: 38px; margin: 0 12px; }
+  .match-minute { font-size: 13px; margin-top: 14px; }
+}
+
+@media (max-width: 700px) {
+  .football-scoreline {
+    gap: 14px;
+    grid-template-columns: 1fr 105px 1fr;
+    padding: 23px 16px;
+  }
+
+  .score-team {
+    align-items: center;
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+
+  .score-team-away { flex-direction: column; text-align: center; }
+  .score-team strong { font-size: 13px; }
+  .team-crest { flex-basis: 38px; font-size: 16px; height: 38px; width: 38px; }
+  .football-detail .team-crest.football-crest { flex-basis: 44px; height: 44px; width: 44px; }
+  .football-score-values { font-size: 42px; }
+  .football-score-values b { font-size: 24px; margin: 0 5px; }
+  .football-scorer { font-size: 11px; }
+}
+
+@media (max-width: 680px) {
+  .football-scoreline { grid-template-columns: 1fr 120px 1fr; }
+  .score-team { gap: 9px; }
+  .score-team strong { font-size: 12px; }
+}

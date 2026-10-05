@@ -1,0 +1,89 @@
+/* Cricket scoreboard */
+.cricket-main-score { padding: 28px 30px 18px; }
+
+.cricket-team-label {
+  color: #e7b24f;
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .14em;
+}
+
+.cricket-main-score strong {
+  color: #fff;
+  display: block;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 58px;
+  letter-spacing: -.07em;
+  line-height: 1;
+  margin-top: 10px;
+}
+
+.cricket-main-score strong small {
+  color: #89919d;
+  font-size: .55em;
+  letter-spacing: -.03em;
+}
+
+.overs-label {
+  color: #7b8591;
+  display: block;
+  font-size: 12px;
+  margin-top: 9px;
+}
+
+.cricket-supporting-score {
+  border-top: 1px solid #292f38;
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 30px;
+}
+
+.cricket-supporting-score span { color: #cfd3d9; font-size: 13px; font-weight: 600; }
+.cricket-supporting-score strong { color: #6f7885; font-size: 12px; font-weight: 500; }
+
+.cricket-stats-grid {
+  border-top: 1px solid #292f38;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.cricket-stats-grid div {
+  border-right: 1px solid #292f38;
+  padding: 14px 20px;
+}
+
+.cricket-stats-grid div:last-child { border-right: 0; }
+.cricket-stats-grid span { color: #69717d; display: block; font-size: 10px; }
+
+.cricket-stats-grid strong {
+  color: #dfe2e7;
+  display: block;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 16px;
+  margin-top: 4px;
+}
+
+.cricket-kicker { color: #e7b24f !important; }
+.cricket-badge { color: #e7b24f; }
+
+@media (min-width: 701px) {
+  .cricket-main-score { padding: 34px 32px 24px; }
+  .cricket-team-label { font-size: 15px; }
+  .cricket-main-score strong { font-size: 72px; }
+  .overs-label { font-size: 14px; }
+
+  .cricket-supporting-score { padding: 20px 32px; }
+  .cricket-supporting-score span,
+  .cricket-supporting-score strong { font-size: 15px; }
+
+  .cricket-stats-grid div { padding: 18px 24px; }
+  .cricket-stats-grid span { font-size: 12px; }
+  .cricket-stats-grid strong { font-size: 21px; }
+}
+
+@media (max-width: 700px) {
+  .cricket-stats-grid { grid-template-columns: 1fr; }
+  .cricket-stats-grid div { border-bottom: 1px solid #292f38; border-right: 0; }
+  .cricket-stats-grid div:last-child { border-bottom: 0; }
+}

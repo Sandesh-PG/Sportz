@@ -1,3 +1,4 @@
+import './CricketCommentary.css';
 import CricketEvent from './CricketEvent.jsx';
 
 export default function CricketCommentary({ events = [], score }) {

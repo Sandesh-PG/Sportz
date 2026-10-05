@@ -1,3 +1,4 @@
+import './FootballEvent.css';
 const EVENT_CONFIG = {
   goal: { label: 'GOAL', icon: '⚽', className: 'event-goal' },
   yellow_card: { label: 'YELLOW CARD', icon: '🟨', className: 'event-yellow-card' },

@@ -1,3 +1,4 @@
+import './FootballMatchView.css';
 import MatchStatus from '../../components/MatchStatus.jsx';
 import FootballCommentary from './FootballCommentary.jsx';
 import FootballScoreboard from './FootballScoreboard.jsx';

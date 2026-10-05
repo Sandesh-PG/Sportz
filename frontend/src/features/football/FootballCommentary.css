@@ -1,0 +1,38 @@
+/* Football commentary */
+.event-timeline {
+  position: relative;
+  max-height: 520px;
+  overflow-y: auto;
+  padding-right: 8px;
+  scrollbar-width: thin;
+  scrollbar-color: #3a424d transparent;
+}
+
+.event-timeline::-webkit-scrollbar { width: 6px; }
+.event-timeline::-webkit-scrollbar-track { background: transparent; }
+.event-timeline::-webkit-scrollbar-thumb { background: #3a424d; border-radius: 999px; }
+.event-timeline::-webkit-scrollbar-thumb:hover { background: #59636f; }
+
+.event-timeline::before {
+  background: #2b323b;
+  content: '';
+  left: 76px;
+  position: absolute;
+  top: 5px;
+  bottom: 8px;
+  width: 1px;
+}
+
+@media (min-width: 701px) {
+  .commentary-panel { padding: 30px 32px 26px; }
+  .detail-section-heading { margin-bottom: 30px; }
+  .detail-section-heading h2 { font-size: 28px; }
+  .detail-section-heading .section-kicker { font-size: 12px; }
+  .event-count { font-size: 13px; }
+  .event-timeline { max-height: 560px; }
+  .event-timeline::before { left: 88px; }
+}
+
+@media (max-width: 700px) {
+  .event-timeline { max-height: 450px; }
+}
