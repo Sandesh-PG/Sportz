@@ -3,16 +3,19 @@ AgentAPI.config();
 
 import express from 'express';
 import http from 'node:http';
+import { authRouter } from './routes/auth.js';
 import { matchesRouter } from './routes/matches.js';
 import { attachWebSocketServer } from './ws/server.js';
 import { securityMiddleware } from './arcjet.js';
 import { commentaryRouter } from './routes/commantary.js';
 import { startSimulator } from './simulator/simulator.js';
+import cookieParser from 'cookie-parser';
 
 const PORT = process.env.PORT || 10000;
 const HOST = process.env.HOST || '0.0.0.0';
 
 const app = express();
+app.use(cookieParser());
 const server = http.createServer(app);
 
 app.use(express.json());
@@ -23,6 +26,7 @@ app.get('/', (req, res) => {
 
 // app.use(securityMiddleware());
 
+app.use('/api/auth', authRouter);
 app.use('/matches', matchesRouter);
 app.use('/matches/:id/commentary', commentaryRouter);
 

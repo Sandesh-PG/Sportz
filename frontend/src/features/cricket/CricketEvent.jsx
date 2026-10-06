@@ -1,4 +1,5 @@
 import './CricketEvent.css';
+
 const eventDetails = {
   six: { label: 'SIX', className: 'ball-six' },
   four: { label: 'FOUR', className: 'ball-four' },
@@ -10,15 +11,23 @@ const eventDetails = {
   noBall: { label: 'NO BALL', className: 'ball-wide' },
 };
 
-export default function CricketEvent({ event }) {
+export default function CricketEvent({ event, isLatest = false, isRecent = false }) {
   const details = eventDetails[event.eventType] ?? eventDetails.dot;
+  const eventClassName = [
+    'cricket-event',
+    isLatest ? 'is-latest' : '',
+    isRecent ? 'is-recent' : '',
+  ].filter(Boolean).join(' ');
 
   return (
-    <article className="cricket-event">
+    <article className={eventClassName}>
       <span className="ball-number">{event.ball}</span>
       <span className={`ball-result ${details.className}`}>{details.label}</span>
       <div className="cricket-event-copy">
-        {event.actor && <strong>{event.actor}</strong>}
+        <div className="cricket-event-heading">
+          {event.actor && <strong>{event.actor}</strong>}
+          {isLatest && <span className="latest-event-label">LATEST</span>}
+        </div>
         <span>{event.message}</span>
       </div>
     </article>
