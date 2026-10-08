@@ -1,3 +1,4 @@
+import './CricketMatchView.css';
 import MatchStatus from '../../components/MatchStatus.jsx';
 import CricketCommentary from './CricketCommentary.jsx';
 import CricketScoreboard from './CricketScoreboard.jsx';

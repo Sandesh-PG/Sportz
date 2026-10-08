@@ -1,3 +1,4 @@
+import './MatchCard.css';
 import MatchStatus from './MatchStatus.jsx';
 import { Link } from 'react-router-dom';
 

@@ -1,6 +1,53 @@
-import { integer, jsonb, pgEnum, pgTable, serial, text, timestamp } from 'drizzle-orm/pg-core';
+import {
+	boolean,
+	index,
+	integer,
+	jsonb,
+	pgEnum,
+	pgTable,
+	serial,
+	text,
+	timestamp,
+	uniqueIndex,
+} from 'drizzle-orm/pg-core';
 
 export const matchStatus = pgEnum('match_status', ['scheduled', 'live', 'finished']);
+
+export const users = pgTable(
+	'users',
+	{
+		id: serial('id').primaryKey(),
+		name: text('name').notNull(),
+		email: text('email').notNull(),
+		passwordHash: text('password_hash').notNull(),
+		role: text('role').notNull().default('user'),
+		isVerified: boolean('is_verified').notNull().default(false),
+		createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+		updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
+	},
+	(table) => [uniqueIndex('users_email_unique').on(table.email)],
+);
+
+export const sessions = pgTable(
+	'sessions',
+	{
+		id: serial('id').primaryKey(),
+		userId: integer('user_id')
+			.notNull()
+			.references(() => users.id, { onDelete: 'cascade' }),
+		refreshTokenHash: text('refresh_token_hash').notNull(),
+		expiresAt: timestamp('expires_at', { withTimezone: true }).notNull(),
+		createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+		revokedAt: timestamp('revoked_at', { withTimezone: true }),
+		userAgent: text('user_agent'),
+		ipAddress: text('ip_address'),
+	},
+	(table) => [
+		uniqueIndex('sessions_refresh_token_hash_unique').on(table.refreshTokenHash),
+		index('sessions_user_id_idx').on(table.userId),
+		index('sessions_expires_at_idx').on(table.expiresAt),
+	],
+);
 
 export const matches = pgTable('matches', {
 	id: serial('id').primaryKey(),

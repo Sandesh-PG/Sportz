@@ -1,0 +1,86 @@
+/* Match card. Every class starts with "mp-" so nothing in styles.css can collide with it. */
+
+.mp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));gap:20px;align-items:stretch}
+
+.mp{display:flex;min-width:0;color:inherit;text-decoration:none;--mp-line:#596273}
+.mp-live{--mp-line:#ef3f4d}
+.mp-upcoming{--mp-line:#3f78c9}
+.mp-finished{--mp-line:#596273}
+
+/* the card is a flex column, so nothing can overlap the footer */
+.mp-card{position:relative;display:flex;flex-direction:column;width:100%;min-height:300px;overflow:hidden;border:1px solid #29313c;border-radius:18px;background:linear-gradient(145deg,#171c23 0%,#101419 100%);box-shadow:0 14px 35px rgba(0,0,0,.18);transition:transform 180ms ease,border-color 180ms ease,box-shadow 180ms ease}
+.mp-card::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 42%,rgba(255,255,255,.055),transparent 48%);pointer-events:none}
+/* accent bar: clipped by the rounded corners (a border-top would poke out) */
+.mp-card::after{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:var(--mp-line);pointer-events:none}
+.mp:hover .mp-card{transform:translateY(-4px);border-color:#3a4350;box-shadow:0 20px 42px rgba(0,0,0,.28)}
+.mp-live .mp-card{box-shadow:0 12px 35px rgba(239,63,77,.06)}
+.mp-live:hover .mp-card{box-shadow:0 20px 44px rgba(239,63,77,.1)}
+
+/* header */
+.mp-top{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;padding:18px 20px 14px;border-bottom:1px solid #242b34}
+.mp-sport{display:flex;align-items:center;gap:8px;color:#9aa5b5;font-size:.68rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase}
+.mp-status{display:inline-flex;align-items:center;gap:6px;font-size:.68rem;font-weight:800;letter-spacing:.08em}
+.mp-status-live{color:#f04b57}
+.mp-status-live::before{content:"";width:7px;height:7px;border-radius:50%;background:#ef4652;box-shadow:0 0 0 0 rgba(239,70,82,.6);animation:mp-pulse 1.4s ease-out infinite}
+.mp-status-upcoming{color:#8fa3bd}
+.mp-status-finished{color:#8994a5}
+.mp-meta{position:relative;z-index:1;padding:14px 20px 0;color:#697588;font-size:.66rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mp-live .mp-meta{color:#ef4652}
+
+/* teams + centre column: crests are top-aligned so every card in a row lines up */
+.mp-matchup{position:relative;z-index:1;flex:1;display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:start;align-content:start;gap:10px;padding:22px 18px 20px}
+.mp-team{display:flex;flex-direction:column;align-items:center;min-width:0;text-align:center}
+.mp-name{display:flex;align-items:center;justify-content:center;min-height:2.5em;max-width:100%;margin-top:12px;color:#eef2f7;font-size:.95rem;line-height:1.25;font-weight:800}
+
+/* crest: always a true 64x64 box; logos keep their own shape */
+.mp-crest{flex:0 0 auto;width:64px;height:64px;display:flex;align-items:center;justify-content:center;border-radius:50%;font-size:1rem;font-weight:900;letter-spacing:.03em}
+.mp-crest-football{border:1px solid rgba(74,132,210,.55);background:radial-gradient(circle at 35% 30%,#254d80,#172b47 70%);color:#b8d5fa;box-shadow:0 0 0 6px rgba(58,118,200,.06)}
+.mp-crest-cricket{border:1px solid rgba(185,132,18,.62);background:radial-gradient(circle at 35% 30%,#654b10,#30250c 70%);color:#f0cf72;box-shadow:0 0 0 6px rgba(185,132,18,.06)}
+.mp-crest img{display:block;width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 4px 10px rgba(0,0,0,.35))}
+.mp-crest:has(img){background:transparent;border:0;border-radius:0;box-shadow:none}
+.mp-team.is-batting .mp-crest-cricket{box-shadow:0 0 0 4px rgba(185,132,18,.28)}
+
+/* football centres on its team block; cricket and upcoming line up with the crest */
+.mp-center{display:flex;flex-direction:column;align-items:center;justify-content:center;align-self:center;min-width:92px;text-align:center}
+.mp-matchup-cricket .mp-center,.mp-upcoming .mp-center{align-self:start;padding-top:20px}
+
+.mp-scoreline{display:flex;flex-direction:row;flex-wrap:nowrap;align-items:center;justify-content:center;gap:.16em;white-space:nowrap;color:#f7f8fa;font-size:clamp(2rem,3vw,2.7rem);line-height:1;font-weight:900;letter-spacing:-.04em;font-variant-numeric:tabular-nums;text-shadow:0 3px 18px rgba(0,0,0,.45)}
+.mp-colon{color:#4b5666;font-weight:700}
+.mp-vs{color:#5f6b7c;font-size:.8rem;font-weight:900;letter-spacing:.2em}
+.mp-sub{margin-top:10px;color:#667286;font-size:.62rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
+.mp-live .mp-sub{color:#ef4652}
+
+/* cricket scores */
+.mp-cricket-score{display:flex;flex-direction:column;align-items:center;gap:3px;min-height:3.1rem;margin-top:8px}
+.mp-cricket-score b{color:#f5f6f8;font-size:1.55rem;font-weight:900;letter-spacing:-.04em;line-height:1.1;font-variant-numeric:tabular-nums}
+.mp-cricket-score small{color:#697588;font-size:.62rem;font-weight:700;letter-spacing:.04em}
+.mp-cricket-score em{padding-top:6px;color:#596474;font-size:.72rem;font-weight:700;font-style:normal}
+.mp-live .mp-team:not(.is-batting) .mp-cricket-score b{color:#8a96a8}
+
+/* one-line match summary (target / result / who leads) */
+.mp-note{position:relative;z-index:1;margin:0 18px 16px;padding:9px 12px;border-radius:9px;background:rgba(255,255,255,.04);color:#aab4c3;font-size:.72rem;font-weight:600;line-height:1.35;text-align:center}
+.mp-live .mp-note{background:rgba(239,63,77,.09);color:#f2b8bd}
+
+/* footer in normal flow */
+.mp-footer{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 20px;border-top:1px solid #242b34;color:#697588;font-size:.68rem;font-weight:700}
+.mp-footer>span:first-child{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mp-arrow{flex:0 0 auto;color:#ef3f4d;font-size:1rem;transition:transform 180ms ease}
+.mp:hover .mp-arrow{transform:translate(2px,-2px)}
+
+/* score change animation (live cards only): ScorePop remounts on every change */
+.mp-pop{display:inline-block}
+.mp-live .mp-pop{animation:mp-score-pop .7s cubic-bezier(.2,1.5,.4,1)}
+@keyframes mp-score-pop{0%{transform:scale(1.6);color:#ffd166;text-shadow:0 0 20px rgba(255,209,102,.6)}100%{transform:scale(1);color:inherit;text-shadow:none}}
+@keyframes mp-pulse{0%{box-shadow:0 0 0 0 rgba(239,70,82,.55)}70%{box-shadow:0 0 0 7px rgba(239,70,82,0)}100%{box-shadow:0 0 0 0 rgba(239,70,82,0)}}
+@media (prefers-reduced-motion:reduce){.mp-live .mp-pop,.mp-status-live::before{animation:none}}
+
+@media(max-width:600px){
+  .mp-grid{gap:14px}
+  .mp-top{padding:16px 16px 12px}
+  .mp-matchup{padding:20px 12px 18px;gap:6px}
+  .mp-center{min-width:78px}
+  .mp-scoreline{font-size:2rem}
+  .mp-name{font-size:.82rem}
+  .mp-crest{width:56px;height:56px}
+  .mp-footer{padding:12px 16px}
+}

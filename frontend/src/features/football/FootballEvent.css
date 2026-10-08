@@ -1,0 +1,148 @@
+/* Football event */
+.timeline-event {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: 44px 48px 1fr;
+  min-height: 82px;
+  position: relative;
+  transition: background-color .2s ease, transform .2s ease;
+}
+
+.timeline-event.is-latest {
+  background: rgba(59, 130, 246, .055);
+  border-radius: 6px;
+}
+
+.timeline-event.is-recent {
+  animation: football-event-in .7s ease-out;
+}
+
+.event-time {
+  color: #76808c;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  padding-top: 13px;
+  text-align: right;
+}
+
+.event-marker {
+  align-items: center;
+  background: #202630;
+  border: 1px solid #3a444f;
+  border-radius: 50%;
+  display: flex;
+  font-size: 16px;
+  height: 34px;
+  justify-content: center;
+  margin: 4px auto 0;
+  position: relative;
+  width: 34px;
+  z-index: 1;
+}
+
+.event-goal .event-marker { background: rgba(59, 130, 246, .16); border-color: #3b82f6; }
+.event-yellow-card .event-marker { background: rgba(245, 205, 65, .12); border-color: #d8b82f; }
+.event-red-card .event-marker { background: rgba(235, 67, 67, .14); border-color: #e34d52; }
+.event-substitution .event-marker { background: rgba(61, 190, 123, .12); border-color: #3dbb7b; color: #64d59a; }
+.event-half-time .event-marker,
+.event-full-time .event-marker { background: rgba(255,255,255,.06); border-color: #59636f; }
+
+.event-copy { padding: 10px 0 17px; }
+
+.event-title {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.event-title strong {
+  color: #e7ebf0;
+  font-size: 11px;
+  letter-spacing: .1em;
+}
+
+.event-title span { color: #6f7885; font-size: 11px; }
+
+.latest-event-label {
+  background: rgba(61, 190, 123, .12);
+  border: 1px solid rgba(61, 190, 123, .35);
+  border-radius: 999px;
+  color: #64d59a !important;
+  font-size: 8px !important;
+  font-weight: 700;
+  letter-spacing: .08em;
+  line-height: 1 !important;
+  padding: 4px 6px;
+}
+
+.event-copy p {
+  color: #919aa5;
+  font-size: 13px;
+  line-height: 1.45;
+  margin: 7px 0 0;
+}
+
+.event-player {
+  color: #dce4ed !important;
+  font-weight: 700;
+  margin-top: 7px !important;
+}
+
+.substitution-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-top: 7px !important;
+}
+
+.player-in { color: #59c88d; }
+.player-out { color: #e77b83; }
+
+.empty-events {
+  color: #697585;
+  font-size: 13px;
+  padding: 24px 0 10px;
+  text-align: center;
+}
+
+@keyframes football-event-in {
+  0% {
+    background: rgba(61, 190, 123, .2);
+    transform: translateY(-3px);
+  }
+  100% {
+    background: rgba(59, 130, 246, .055);
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .timeline-event { transition: none; }
+  .timeline-event.is-recent { animation: none; }
+}
+
+@media (min-width: 701px) {
+  .timeline-event {
+    gap: 20px;
+    grid-template-columns: 54px 50px 1fr;
+        min-height: 104px;
+  }
+
+  .event-time { font-size: 16px; padding-top: 14px; }
+  .event-marker { font-size: 19px; height: 40px; width: 40px; }
+  .event-copy { padding: 10px 0 22px; }
+  .event-title { gap: 11px; }
+  .event-title strong, .event-title span { font-size: 13px; }
+  .event-copy p { font-size: 15px; line-height: 1.55; margin-top: 9px; }
+  .event-player { font-size: 16px !important; margin-top: 9px !important; }
+  .substitution-copy { font-size: 15px; gap: 4px; margin-top: 9px !important; }
+  .latest-event-label { font-size: 9px !important; }
+}
+
+@media (max-width: 700px) {
+  .event-time { font-size: 14px; }
+  .event-title strong, .event-title span { font-size: 11px; }
+  .event-copy p { font-size: 13px; }
+  .latest-event-label { font-size: 7px !important; }
+}

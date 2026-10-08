@@ -1,0 +1,111 @@
+/* Cricket event */
+.cricket-event {
+  align-items: center;
+  border-bottom: 1px solid #292f38;
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 38px 76px 1fr;
+  min-height: 65px;
+  padding: 10px 0;
+  position: relative;
+  transition: background-color .2s ease, transform .2s ease;
+}
+
+.cricket-event:last-child { border-bottom: 0; }
+
+.cricket-event.is-latest {
+  background: rgba(59, 130, 246, .055);
+}
+
+.cricket-event.is-recent {
+  animation: cricket-event-in .7s ease-out;
+  border-radius: 6px;
+}
+
+.ball-number {
+  color: #78828e;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 12px;
+}
+
+.ball-result {
+  align-items: center;
+  border-radius: 5px;
+  display: inline-flex;
+  font-size: 9px;
+  font-weight: 700;
+  height: 25px;
+  justify-content: center;
+  letter-spacing: .08em;
+  width: 68px;
+}
+
+.ball-six { background: #3b2c10; color: #ffd478; }
+.ball-four { background: #302811; color: #f3c86c; }
+.ball-dot { background: #222831; color: #a5adb7; font-size: 18px; }
+.ball-single, .ball-double { background: #1b2b45; color: #b8d5ff; }
+.ball-wicket { background: #3c1e24; color: #ff9ba0; }
+.ball-wide { background: #30213d; color: #dab5f8; }
+
+.cricket-event-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cricket-event-heading {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+}
+
+.cricket-event-copy strong { color: #e8ebef; font-size: 12px; }
+.cricket-event-copy span { color: #89929d; font-size: 12px; line-height: 1.35; }
+
+.latest-event-label {
+  background: rgba(61, 190, 123, .12);
+  border: 1px solid rgba(61, 190, 123, .35);
+  border-radius: 999px;
+  color: #64d59a !important;
+  font-size: 8px !important;
+  font-weight: 700;
+  letter-spacing: .08em;
+  line-height: 1 !important;
+  padding: 4px 6px;
+}
+
+@keyframes cricket-event-in {
+  0% {
+    background: rgba(61, 190, 123, .2);
+    transform: translateY(-3px);
+  }
+  100% {
+    background: rgba(59, 130, 246, .055);
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cricket-event { transition: none; }
+  .cricket-event.is-recent { animation: none; }
+}
+
+@media (min-width: 701px) {
+  .cricket-event {
+    gap: 16px;
+    grid-template-columns: 48px 86px 1fr;
+    min-height: 82px;
+    padding: 14px 0;
+  }
+
+  .ball-number { font-size: 14px; }
+  .ball-result { font-size: 11px; height: 31px; width: 78px; }
+  .cricket-event-copy { gap: 6px; }
+  .cricket-event-copy strong { font-size: 15px; }
+  .cricket-event-copy span { font-size: 14px; line-height: 1.5; }
+  .latest-event-label { font-size: 9px !important; }
+}
+
+@media (max-width: 700px) {
+  .latest-event-label { font-size: 7px !important; }
+}

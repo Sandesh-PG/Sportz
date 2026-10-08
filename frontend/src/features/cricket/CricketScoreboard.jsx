@@ -1,3 +1,4 @@
+import './CricketScoreboard.css';
 import MatchStatus from '../../components/MatchStatus.jsx';
 
 export default function CricketScoreboard({ match }) {

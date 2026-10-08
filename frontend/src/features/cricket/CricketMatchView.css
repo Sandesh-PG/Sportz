@@ -1,0 +1,107 @@
+/* Cricket match view */
+.cricket-detail-grid {
+  display: grid;
+  gap: 22px;
+  grid-template-columns: .9fr 1.1fr;
+  margin-top: 22px;
+}
+
+.batting-panel { padding: 27px 28px; }
+
+.player-row {
+  align-items: center;
+  border-bottom: 1px solid #292f38;
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 0;
+}
+
+.player-row strong { color: #e8ebef; font-size: 13px; }
+
+.player-row span {
+  color: #fff;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 17px;
+}
+
+.player-row small {
+  color: #7c8692;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+}
+
+.empty-player-state {
+  color: #697585;
+  font-size: 13px;
+  padding: 18px 0;
+}
+
+.bowler-block { margin-top: 26px; }
+.last-over { margin-top: 30px; }
+
+.bowler-block p,
+.last-over p {
+  color: #e7b24f;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.over-balls {
+  display: flex;
+  gap: 8px;
+  margin-top: 13px;
+}
+
+.over-balls span {
+  align-items: center;
+  background: #222831;
+  border: 1px solid #343d48;
+  border-radius: 50%;
+  color: #c7cdd4;
+  display: inline-flex;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 12px;
+  height: 28px;
+  justify-content: center;
+  width: 28px;
+}
+
+.over-balls .over-highlight {
+  background: #3b2c10;
+  border-color: #bd8925;
+  color: #ffd478;
+}
+
+.empty-over { color: #697585; }
+
+@media (min-width: 701px) {
+  .batting-panel { padding: 32px 34px; }
+
+  .batting-panel .detail-section-heading h2,
+  .cricket-commentary .detail-section-heading h2 { font-size: 29px; }
+
+  .player-row { padding: 19px 0; }
+  .player-row strong { font-size: 16px; }
+  .player-row span { font-size: 21px; }
+  .player-row small { font-size: 13px; }
+  .bowler-block { margin-top: 32px; }
+
+  .bowler-block p,
+  .last-over p { font-size: 12px; }
+
+  .over-balls { gap: 10px; margin-top: 16px; }
+
+  .over-balls span {
+    font-size: 14px;
+    height: 34px;
+    width: 34px;
+  }
+}
+
+@media (max-width: 700px) {
+  .cricket-detail-grid { grid-template-columns: 1fr; }
+  .batting-panel { padding: 22px 18px 17px; }
+}

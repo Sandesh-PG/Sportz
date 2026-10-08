@@ -1,3 +1,4 @@
+/* Matches page layout only. The match cards live in components/MatchPoster.css */
 .matches-title-row{display:flex;align-items:flex-end;justify-content:space-between;gap:48px}
 .live-summary{min-width:150px;padding-left:24px;border-left:1px solid #29303a;display:flex;flex-direction:column;gap:2px}
 .live-summary strong{font-size:clamp(2rem,4vw,3.5rem);line-height:.9;letter-spacing:-.05em}
@@ -8,105 +9,15 @@
 .search-input-wrap{min-height:44px;display:flex;align-items:center;gap:9px;padding:0 12px;border:1px solid #29303a;border-radius:9px;background:#101419}
 .search-input-wrap>span{color:#8994a5;font-size:1.1rem}.search-input-wrap input{width:100%;min-width:0;border:0;outline:0;background:transparent;color:inherit;font:inherit}.search-input-wrap input::placeholder{color:#596474}.clear-search{width:28px;height:28px;flex:0 0 28px;border:0;border-radius:50%;background:#252b34;color:#aeb7c4;cursor:pointer;font-size:1rem}.status-filters{display:flex;flex-wrap:wrap;gap:7px}.status-filter{min-height:40px;padding:0 14px;border:1px solid transparent;border-radius:999px;background:transparent;color:#7d899a;cursor:pointer;font:inherit;font-size:.75rem;font-weight:700;transition:160ms ease}.status-filter:hover{color:#eef2f7;background:#1a2028}.status-filter.selected{border-color:#303844;background:#242a33;color:#f4f6f8}.matches-result-heading{margin-top:52px}.match-sections{display:flex;flex-direction:column;gap:64px}.match-section{scroll-margin-top:90px}.match-section-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:22px}.match-section-heading h2{margin:0}.match-section-count{color:#657184;font-size:.72rem;white-space:nowrap}
 
-/* ============================ Match posters ============================ */
-/* Selectors are prefixed with .matches-page so they win over global styles.css rules. */
-
-.matches-page .match-sections .match-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px;align-items:stretch}
-
-.matches-page .match-poster{display:flex;min-width:0;color:inherit;text-decoration:none;--poster-line:#596273}
-.matches-page .poster-live{--poster-line:#ef3f4d}
-.matches-page .poster-upcoming{--poster-line:#3f78c9}
-.matches-page .poster-finished{--poster-line:#596273}
-.matches-page .match-poster-football{--poster-accent:#3976c8}
-.matches-page .match-poster-cricket{--poster-accent:#b98412}
-
-/* the card is a flex column, so nothing can overlap the footer */
-.matches-page .match-poster article{position:relative;display:flex;flex-direction:column;width:100%;min-height:300px;overflow:hidden;border:1px solid #29313c;border-radius:18px;background:linear-gradient(145deg,#171c23 0%,#101419 100%);box-shadow:0 14px 35px rgba(0,0,0,.18);transition:transform 180ms ease,border-color 180ms ease,box-shadow 180ms ease}
-.matches-page .match-poster article::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 42%,rgba(255,255,255,.055),transparent 48%);pointer-events:none}
-/* accent bar: clipped by the card's rounded corners (a border-top would poke out) */
-.matches-page .match-poster article::after{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:var(--poster-line);pointer-events:none}
-.matches-page .match-poster:hover article{transform:translateY(-4px);border-color:#3a4350;box-shadow:0 20px 42px rgba(0,0,0,.28)}
-
-/* header */
-.matches-page .poster-topline{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;padding:18px 20px 14px;border-bottom:1px solid #242b34}
-.matches-page .poster-sport{display:flex;align-items:center;gap:8px;color:#9aa5b5;font-size:.68rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase}
-.matches-page .poster-status{display:inline-flex;align-items:center;gap:6px;font-size:.68rem;font-weight:800;letter-spacing:.08em}
-.matches-page .poster-status-live{color:#f04b57}
-.matches-page .poster-status-live::before{content:"";width:7px;height:7px;border-radius:50%;background:#ef4652;box-shadow:0 0 0 0 rgba(239,70,82,.6);animation:poster-live-pulse 1.4s ease-out infinite}
-.matches-page .poster-status-upcoming{color:#8fa3bd}
-.matches-page .poster-status-finished{color:#8994a5}
-.matches-page .poster-meta{position:relative;z-index:1;padding:14px 20px 0;color:#697588;font-size:.66rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-
-/* teams + centre column */
-.matches-page .poster-matchup{position:relative;z-index:1;flex:1;display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:start;align-content:center;gap:10px;padding:22px 18px 20px}
-.matches-page .poster-team{display:flex;flex-direction:column;align-items:center;min-width:0;text-align:center}
-.matches-page .poster-team strong{display:flex;align-items:center;justify-content:center;min-height:2.5em;max-width:100%;margin-top:12px;color:#eef2f7;font-size:.95rem;line-height:1.25;font-weight:800}
-.matches-page .poster-crest{width:64px;height:64px;display:grid;place-items:center;border-radius:50%;font-size:1rem;font-weight:900;letter-spacing:.03em}
-.matches-page .football-crest{border:1px solid rgba(74,132,210,.55);background:radial-gradient(circle at 35% 30%,#254d80,#172b47 70%);color:#b8d5fa;box-shadow:0 0 0 6px rgba(58,118,200,.06)}
-
-.matches-page .poster-crest img{
-  width:72%;
-  height:72%;
-  object-fit:contain;
-  display:block;
-}
-
-.matches-page .football-crest:has(img){
-  border-color:rgba(74,132,210,.35);
-  background:rgba(255,255,255,.96);
-  box-shadow:0 0 0 6px rgba(58,118,200,.06);
-}
-
-.matches-page .football-crest:has(img) img{
-  width:76%;
-  height:76%;
-}
-
-.matches-page .cricket-crest{border:1px solid rgba(185,132,18,.62);background:radial-gradient(circle at 35% 30%,#654b10,#30250c 70%);color:#f0cf72;box-shadow:0 0 0 6px rgba(185,132,18,.06)}
-
-/* football centres on the whole team block; cricket lines up with the crest */
-.matches-page .poster-center{display:flex;flex-direction:column;align-items:center;justify-content:center;align-self:center;min-width:92px;text-align:center}
-.matches-page .cricket-matchup .poster-center{align-self:start;padding-top:20px}
-.matches-page .poster-upcoming .poster-center{align-self:start;padding-top:20px}
-
-.matches-page .poster-scoreline{display:flex;flex-direction:row;flex-wrap:nowrap;align-items:center;justify-content:center;gap:.16em;white-space:nowrap;color:#f7f8fa;font-size:clamp(2rem,3vw,2.7rem);line-height:1;font-weight:900;letter-spacing:-.04em;font-variant-numeric:tabular-nums;text-shadow:0 3px 18px rgba(0,0,0,.45)}
-.matches-page .poster-scoreline .poster-colon{color:#4b5666;font-weight:700;font-style:normal}
-.matches-page .poster-vs-label{color:#5f6b7c;font-size:.8rem;font-weight:900;letter-spacing:.2em}
-.matches-page .poster-sub{margin-top:10px;color:#667286;font-size:.62rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
-.matches-page .poster-live .poster-sub{color:#ef4652}
-
-/* cricket scores */
-.matches-page .poster-cricket-score{display:flex;flex-direction:column;align-items:center;gap:3px;min-height:3.1rem;margin-top:8px}
-.matches-page .poster-cricket-score b{color:#f5f6f8;font-size:1.55rem;font-weight:900;letter-spacing:-.04em;line-height:1.1;font-variant-numeric:tabular-nums}
-.matches-page .poster-cricket-score small{color:#697588;font-size:.62rem;font-weight:700;letter-spacing:.04em}
-.matches-page .poster-cricket-score em{padding-top:6px;color:#596474;font-size:.72rem;font-weight:700;font-style:normal}
-.matches-page .poster-live .poster-team:not(.is-batting) .poster-cricket-score b{color:#8a96a8}
-.matches-page .poster-team.is-batting .cricket-crest{box-shadow:0 0 0 4px rgba(185,132,18,.28)}
-
-/* one-line match summary (target / result) */
-.matches-page .poster-note{position:relative;z-index:1;margin:0 18px 16px;padding:9px 12px;border-radius:9px;background:rgba(255,255,255,.04);color:#aab4c3;font-size:.72rem;font-weight:600;line-height:1.35;text-align:center}
-.matches-page .poster-live .poster-note{background:rgba(239,63,77,.09);color:#f2b8bd}
-
-/* footer sits in normal flow now */
-.matches-page .poster-bottomline{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 20px;border-top:1px solid #242b34;color:#697588;font-size:.68rem;font-weight:700}
-.matches-page .poster-bottomline>span:first-child{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.matches-page .poster-arrow{flex:0 0 auto;color:#ef3f4d;font-size:1rem;transition:transform 180ms ease}
-.matches-page .match-poster:hover .poster-arrow{transform:translate(2px,-2px)}
-
-/* live emphasis */
-.matches-page .poster-live .poster-meta{color:#ef4652}
-.matches-page .match-section-live .match-poster article{box-shadow:0 12px 35px rgba(239,63,77,.06)}
-.matches-page .match-section-live .match-poster:hover article{box-shadow:0 20px 44px rgba(239,63,77,.1)}
-
-/* score change animation (live cards only): ScorePop remounts on every change */
-.matches-page .score-pop{display:inline-block}
-.matches-page .poster-live .score-pop{animation:poster-score-pop .7s cubic-bezier(.2,1.5,.4,1)}
-.matches-page .match-sections .match-poster .poster-matchup{align-content:start}
-@keyframes poster-score-pop{0%{transform:scale(1.6);color:#ffd166;text-shadow:0 0 20px rgba(255,209,102,.6)}100%{transform:scale(1);color:inherit;text-shadow:none}}
-@keyframes poster-live-pulse{0%{box-shadow:0 0 0 0 rgba(239,70,82,.55)}70%{box-shadow:0 0 0 7px rgba(239,70,82,0)}100%{box-shadow:0 0 0 0 rgba(239,70,82,0)}}
-@media (prefers-reduced-motion:reduce){.matches-page .poster-live .score-pop,.matches-page .poster-status-live::before{animation:none}}
-
 .matches-empty{min-height:260px;margin-top:28px;padding:56px 24px;border:1px dashed #2a323d;border-radius:14px;text-align:center}.matches-empty-icon{width:46px;height:46px;margin:0 auto 16px;display:grid;place-items:center;border-radius:50%;background:#171c23;color:#778397;font-size:1.3rem}.matches-empty h2{margin:0 0 8px;font-size:1.35rem}.matches-empty p{margin:0 0 22px;color:#6f7b8d;font-size:.86rem}
 
 @media(max-width:900px){.matches-title-row{align-items:flex-start;flex-direction:column;gap:28px}.live-summary{min-width:0;padding-left:0;border-left:0}.matches-toolbar{align-items:stretch;flex-direction:column}}
-@media(max-width:600px){.matches-toolbar{padding:14px}.matches-search{min-width:0}.status-filters{overflow-x:auto;flex-wrap:nowrap;padding-bottom:2px}.status-filter{flex:0 0 auto}.match-section-heading{align-items:flex-start;flex-direction:column;gap:6px}.matches-page .match-sections .match-grid{grid-template-columns:1fr;gap:14px}.matches-page .poster-topline{padding:16px 16px 12px}.matches-page .poster-matchup{position:relative;z-index:1;flex:1;display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:start;align-content:start;padding:22px 18px 20px}}
+@media(max-width:600px){.matches-toolbar{padding:14px}.matches-search{min-width:0}.status-filters{overflow-x:auto;flex-wrap:nowrap;padding-bottom:2px}.status-filter{flex:0 0 auto}.match-section-heading{align-items:flex-start;flex-direction:column;gap:6px}}
+
+/* Remaining Matches page typography/layout */
+.matches-header { margin-bottom: 76px; }
+.matches-header h1 { font-size: clamp(52px, 8vw, 88px); }
+.not-found-page { margin: 0 auto; max-width: 850px; padding: 150px 32px; }
+.not-found-page h1 { font-size: clamp(48px, 8vw, 88px); }
+.not-found-link { display: inline-block; margin-top: 30px; }
+

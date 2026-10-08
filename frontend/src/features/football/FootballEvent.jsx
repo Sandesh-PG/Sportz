@@ -1,3 +1,5 @@
+import './FootballEvent.css';
+
 const EVENT_CONFIG = {
   goal: { label: 'GOAL', icon: '⚽', className: 'event-goal' },
   yellow_card: { label: 'YELLOW CARD', icon: '🟨', className: 'event-yellow-card' },
@@ -19,7 +21,11 @@ function getConfig(event) {
     if (cardType.includes('red')) return EVENT_CONFIG.red_card;
   }
 
-  return { label: String(event.eventType ?? 'UPDATE').replaceAll('_', ' ').toUpperCase(), icon: '•', className: 'event-default' };
+  return {
+    label: String(event.eventType ?? 'UPDATE').replaceAll('_', ' ').toUpperCase(),
+    icon: '•',
+    className: 'event-default',
+  };
 }
 
 function formatMinute(event) {
@@ -28,19 +34,27 @@ function formatMinute(event) {
   return minute.endsWith("'") ? minute : `${minute}'`;
 }
 
-export default function FootballEvent({ event }) {
+export default function FootballEvent({ event, isLatest = false, isRecent = false }) {
   const config = getConfig(event);
   const isSubstitution = event.eventType === 'substitution';
   const playerOut = event.metadata?.playerOut ?? event.playerOut;
 
+  const eventClassName = [
+    'timeline-event',
+    config.className,
+    isLatest ? 'is-latest' : '',
+    isRecent ? 'is-recent' : '',
+  ].filter(Boolean).join(' ');
+
   return (
-    <article className={`timeline-event ${config.className}`}>
+    <article className={eventClassName}>
       <time className="event-time">{formatMinute(event)}</time>
       <div className="event-marker" aria-hidden="true">{config.icon}</div>
       <div className="event-copy">
         <div className="event-title">
           <strong>{config.label}</strong>
           {event.team ? <span>{event.team}</span> : null}
+          {isLatest && <span className="latest-event-label">LATEST</span>}
         </div>
 
         {isSubstitution && playerOut ? (
